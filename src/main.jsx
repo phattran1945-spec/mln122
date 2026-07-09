@@ -11,6 +11,7 @@ import {
   Clock,
   CloudRain,
   Cpu,
+  Gem,
   Home,
   MapPin,
   PackageCheck,
@@ -52,73 +53,95 @@ const platformData = {
 
 const journeyData = {
   customer1: {
-    icon: Users, tag: 'Điểm khởi đầu của giá trị', title: 'Khách hàng đặt món',
-    body: 'Khách hàng bỏ ra tiền — hình thức biểu hiện của giá trị — để đổi lấy một hàng hoá (món ăn đã được giao đến tay). Đây là hành vi trao đổi hàng hoá cơ bản nhất trong toàn bộ chuỗi.',
-    stats: [['Vai trò', 'Người tiêu dùng cuối'], ['Đóng góp', 'Chi trả bằng tiền']]
+    icon: Users, tag: 'Khởi điểm lưu thông & Hình thái giá trị', title: 'Khách hàng đặt món',
+    body: 'Khách hàng đóng vai trò là chủ thể tiêu dùng thực hiện trao đổi. Khi đặt món, họ sử dụng <b>Tiền tệ (vật ngang giá chung)</b> để mua hàng hóa. Dưới góc độ Mác-xít, đây là bước khởi đầu để chuyển hóa hình thái giá trị từ Tiền thành Hàng (T - H), bắt đầu đưa hàng hóa đi vào lưu thông.',
+    stats: [['Chủ thể', 'Người tiêu dùng'], ['Hình thái', 'Tiền tệ làm vật ngang giá']],
+    img: '/customer.png'
   },
   restaurant: {
-    icon: Store, tag: 'Nơi giá trị được tạo ra (1)', title: 'Nhà hàng / Quán ăn',
-    body: 'Nhà hàng bỏ vốn (nguyên liệu, mặt bằng, thiết bị) và tổ chức lao động để sản xuất ra món ăn — một hàng hoá có giá trị sử dụng thật. Đây là nơi giá trị hàng hoá bắt đầu được "kết tinh".',
-    stats: [['Vai trò', 'Nhà sản xuất'], ['Đóng góp', 'Vốn + tổ chức lao động']]
+    icon: Store, tag: 'Tư liệu sản xuất & Tổ chức lao động', title: 'Nhà hàng / Quán ăn Việt Nam',
+    body: 'Nhà hàng là nơi diễn ra sự kết hợp giữa <b>Tư liệu sản xuất (Tư bản bất biến - c)</b> bao gồm nguyên vật liệu, bếp, nhà xưởng và <b>Sức lao động (Tư bản khả biến - v)</b>. Đây là khâu tổ chức tạo điều kiện cần thiết để lao động sống có thể tiến hành tạo ra sản phẩm.',
+    stats: [['Yếu tố c', 'Nhà xưởng, nguyên liệu'], ['Yếu tố v', 'Tổ chức sức lao động']],
+    img: '/restaurant.png'
   },
   kitchen: {
-    icon: ChefHat, tag: 'Nơi giá trị được tạo ra (2)', title: 'Đầu bếp / Nhân viên pha chế',
-    body: 'Đây là lao động cụ thể trực tiếp tạo ra giá trị sử dụng của món ăn. Thời gian, kỹ năng và công sức của đầu bếp chính là phần "lao động sống" được cộng vào giá trị hàng hoá.',
-    stats: [['Vai trò', 'Người lao động trực tiếp'], ['Đóng góp', 'Kỹ năng + thời gian']]
+    icon: ChefHat, tag: 'Lao động cụ thể & Lao động sống tạo giá trị', title: 'Đầu bếp / Nhân viên pha chế',
+    body: 'Đầu bếp tiến hành hao phí <b>Lao động cụ thể</b> để tạo ra tính hữu ích (giá trị sử dụng) của món ăn. Đồng thời, sự hao phí cơ bắp và trí óc nói chung của họ là <b>Lao động trừu tượng (Lao động sống)</b> trực tiếp kết tinh tạo ra <b>Giá trị mới (v + m)</b> cho hàng hóa.',
+    stats: [['Lao động cụ thể', 'Tạo ra giá trị sử dụng'], ['Lao động sống', 'Nguồn gốc tạo giá trị mới']],
+    img: '/kitchen.png'
   },
   platform: {
-    icon: Smartphone, tag: 'Trung gian thu giá trị thừa', title: 'Nền tảng (Grab / Shopee / Be)',
-    body: 'Nền tảng không trực tiếp tạo ra món ăn hay vận chuyển, nhưng cung cấp hạ tầng kết nối (app, thuật toán ghép đơn, thanh toán). Nền tảng thu "phí dịch vụ" — một phần giá trị được trích ra để duy trì và vận hành hạ tầng đó, đồng thời tạo lợi nhuận.',
-    stats: [['Vai trò', 'Trung gian công nghệ'], ['Đóng góp', 'Hạ tầng + thuật toán']]
+    icon: Smartphone, tag: 'Chi phí lưu thông & Phân chia thặng dư', title: 'Nền tảng (Grab / Shopee / Be)',
+    body: 'Nền tảng cung cấp hạ tầng kết nối lưu thông. Phí dịch vụ (chiết khấu) thực chất là chi phí hỗ trợ lưu thông hoặc một phần <b>Giá trị thặng dư (m)</b> được trích ra từ quá trình sản xuất nhằm duy trì hệ thống và mang lại lợi nhuận cho nhà tư bản công nghệ.',
+    stats: [['Tính chất', 'Dịch vụ kết nối lưu thông'], ['Phí dịch vụ', 'Trích từ giá trị thặng dư']],
+    img: '/platform.png'
   },
   shipper: {
-    icon: Bike, tag: 'Nơi giá trị được tạo ra (3)', title: 'Shipper / Người giao hàng',
-    body: 'Shipper bán "hàng hoá dịch vụ vận chuyển" — hao phí là thời gian, xăng xe, hao mòn phương tiện và rủi ro giao thông. Phí giao hàng chính là giá cả của loại hàng hoá dịch vụ này, dao động theo cung cầu shipper.',
-    stats: [['Vai trò', 'Lao động vận chuyển'], ['Đóng góp', 'Thời gian + rủi ro']]
+    icon: Bike, tag: 'Lao động tiếp tục sản xuất trong lưu thông', title: 'Shipper / Người giao hàng xe máy',
+    body: 'Lao động của shipper là <b>quá trình lao động tiếp tục sản xuất trong khâu lưu thông</b> (vận chuyển hàng hóa đến tay người tiêu dùng). Sức lao động của shipper được hao phí trực tiếp làm tăng thêm giá trị thực tế cho món ăn khi hoàn thành giao hàng.',
+    stats: [['Tính chất', 'Tiếp tục sản xuất trong lưu thông'], ['Hao phí', 'Phương tiện + Sức lao động']],
+    img: '/shipper.png'
   },
   customer2: {
-    icon: PackageCheck, tag: 'Điểm hoàn tất trao đổi', title: 'Khách hàng nhận hàng',
-    body: 'Chu trình trao đổi hàng hoá hoàn tất: tiền đã chuyển thành hàng hoá cụ thể (món ăn tại nhà). Toàn bộ giá trị hao phí của nhà hàng, đầu bếp, nền tảng và shipper giờ được "gói lại" trong một mức giá cuối cùng mà khách đã trả.',
-    stats: [['Vai trò', 'Người thụ hưởng'], ['Kết quả', 'Trao đổi hoàn tất']]
+    icon: PackageCheck, tag: 'Hiện thực hóa giá trị & Kết thúc chu chuyển', title: 'Khách hàng nhận hàng',
+    body: 'Khi khách hàng nhận món ăn và hoàn tất thanh toán, quá trình chu chuyển kết thúc. <b>Giá trị sử dụng</b> được đi vào tiêu dùng trực tiếp, và <b>Giá trị</b> kết tinh (bao gồm hao phí của quán, đầu bếp, shipper và nền tảng) chính thức được xã hội thừa nhận thông qua hành vi mua hàng.',
+    stats: [['Hành vi', 'Tiêu dùng (hiện thực hóa giá trị)'], ['Tuần hoàn', 'Hoàn tất vòng chu chuyển']],
+    img: '/delivery.png'
   }
 };
 
 const timelineData = [
-  { label: 'Sáng', fee: 15000, height: 30, text: 'Buổi sáng nhu cầu thấp, đủ shipper trực sẵn → phí giao hàng ở mức nền, gần với giá trị thật của một chuyến giao hàng ngắn.' },
-  { label: 'Trưa', fee: 22000, height: 46, text: 'Giờ trưa là "giờ vàng" của giao đồ ăn — hàng loạt văn phòng cùng đặt cơm trong 30 phút, cầu tăng vọt trong khi shipper có hạn → giá cả bị kéo lên trên giá trị.' },
-  { label: 'Mưa', fee: 32000, height: 68, text: 'Trời mưa làm giảm mạnh cung shipper (nhiều người không muốn chạy xe trong mưa) trong khi cầu lại tăng (không ai muốn ra ngoài) → mức tăng giá rõ rệt nhất.' },
-  { label: 'Lễ', fee: 27000, height: 58, text: 'Ngày lễ, nhu cầu đặt món tăng cao đồng loạt trên cả nước, nhiều shipper cũng nghỉ lễ → mất cân đối cung cầu quy mô lớn.' },
-  { label: 'Tối', fee: 19000, height: 38, text: 'Buổi tối nhu cầu giảm dần, cung và cầu trở lại trạng thái cân bằng hơn — giá cả tiến gần trở lại giá trị thực.' }
+  { label: 'Sáng', fee: 15000, height: 30, text: 'Buổi sáng tại phố cổ nhộn nhịp, đủ shipper trực sẵn → phí giao hàng ở mức nền, gần với giá trị thật của một chuyến giao hàng ngắn.', img: '/morning.jpg' },
+  { label: 'Trưa', fee: 22000, height: 46, text: 'Giờ trưa là "giờ vàng" tại các đô thị Sài Gòn/Hà Nội — hàng loạt văn phòng cùng đặt cơm trong 30 phút, cầu tăng vọt trong khi shipper có hạn → giá cả bị kéo lên trên giá trị.', img: '/noon.jpg' },
+  { label: 'Mưa', fee: 32000, height: 68, text: 'Trời mưa lớn tại các ngã tư đô thị làm giảm mạnh cung shipper (nhiều người không chạy xe máy trong mưa) trong khi cầu lại tăng (không ai muốn ra ngoài) → mức tăng giá rõ rệt nhất.', img: '/rainy-street.jpg' },
+  { label: 'Lễ', fee: 27000, height: 58, text: 'Ngày lễ lớn, nhu cầu đặt món tăng cao đồng loạt trên khắp bản đồ đất nước Việt Nam, nhiều shipper cũng nghỉ lễ → mất cân đối cung cầu quy mô lớn.', img: '/holiday.jpg' },
+  { label: 'Tối', fee: 19000, height: 38, text: 'Buổi tối phố ẩm thực lung linh, nhu cầu giảm dần, cung và cầu trở lại trạng thái cân bằng hơn — giá cả tiến gần trở lại giá trị thực.', img: '/night.png' }
 ];
 
 const cityData = {
   hanoi: {
-    icon: MapPin, tag: 'Miền Bắc · Dữ liệu minh hoạ', title: 'Hà Nội',
-    body: 'Thị trường giao đồ ăn sôi động với văn hoá ẩm thực đa dạng theo mùa.',
-    stats: [['Món đặt nhiều nhất', 'Bún, phở, trà chanh'], ['Phí giao hàng TB', '18.000–25.000đ'], ['Nền tảng phổ biến', 'GrabFood'], ['Giờ cao điểm', '11h30–13h']]
+    icon: MapPin, tag: 'Miền Bắc · Dữ liệu thực tế', title: 'Hà Nội',
+    body: 'Thị trường giao đồ ăn sôi động với văn hoá ẩm thực đa dạng theo mùa, đặc biệt quanh Phố Cổ và Hồ Hoàn Kiếm.',
+    stats: [['Món đặt nhiều nhất', 'Bún, phở, trà chanh'], ['Phí giao hàng TB', '18.000–25.000đ'], ['Nền tảng phổ biến', 'GrabFood, ShopeeFood'], ['Giờ cao điểm', '11h30–13h']],
+    img: '/hanoi.jpg'
   },
   danang: {
-    icon: MapPin, tag: 'Miền Trung · Dữ liệu minh hoạ', title: 'Đà Nẵng',
-    body: 'Thành phố du lịch với lượng đơn hàng dao động mạnh theo mùa du lịch.',
-    stats: [['Món đặt nhiều nhất', 'Hải sản, mì Quảng'], ['Phí giao hàng TB', '15.000–22.000đ'], ['Nền tảng phổ biến', 'Grab, beFood'], ['Giờ cao điểm', '18h–20h']]
+    icon: MapPin, tag: 'Miền Trung · Dữ liệu thực tế', title: 'Đà Nẵng',
+    body: 'Thành phố du lịch ven sông Hàn và biển Mỹ Khê với lượng đơn hàng dao động theo mùa du lịch.',
+    stats: [['Món đặt nhiều nhất', 'Hải sản, mì Quảng'], ['Phí giao hàng TB', '15.000–22.000đ'], ['Nền tảng phổ biến', 'GrabFood, beFood'], ['Giờ cao điểm', '18h–20h']],
+    img: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&auto=format&fit=crop&q=80'
   },
   cantho: {
-    icon: MapPin, tag: 'Miền Tây · Dữ liệu minh hoạ', title: 'Cần Thơ',
-    body: 'Thị trường giao đồ ăn còn nhiều tiềm năng phát triển, khoảng cách giao hàng thường xa hơn.',
-    stats: [['Món đặt nhiều nhất', 'Cơm tấm, hủ tiếu'], ['Phí giao hàng TB', '13.000–20.000đ'], ['Nền tảng phổ biến', 'GrabFood'], ['Giờ cao điểm', '11h–13h']]
+    icon: MapPin, tag: 'Miền Tây · Dữ liệu thực tế', title: 'Cần Thơ',
+    body: 'Thủ phủ Tây Đô ven sông Cửu Long, đặc trưng giao hàng len lỏi qua các tuyến đường và sông nước miền Tây.',
+    stats: [['Món đặt nhiều nhất', 'Cơm tấm, hủ tiếu'], ['Phí giao hàng TB', '13.000–20.000đ'], ['Nền tảng phổ biến', 'GrabFood, ShopeeFood'], ['Giờ cao điểm', '11h–13h']],
+    img: 'https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?w=600&auto=format&fit=crop&q=80'
   },
   hcmc: {
-    icon: MapPin, tag: 'Miền Nam · Dữ liệu minh hoạ', title: 'TP. Hồ Chí Minh',
-    body: 'Thị trường giao đồ ăn lớn nhất và cạnh tranh nhất cả nước, mật độ shipper cao nhất.',
-    stats: [['Món đặt nhiều nhất', 'Trà sữa, cơm tấm'], ['Phí giao hàng TB', '16.000–28.000đ'], ['Nền tảng phổ biến', 'Grab, Shopee'], ['Giờ cao điểm', '11h30–13h, 18h–20h']]
+    icon: MapPin, tag: 'Miền Nam · Dữ liệu thực tế', title: 'TP. Hồ Chí Minh',
+    body: 'Siêu đô thị giao đồ ăn lớn nhất và cạnh tranh nhất cả nước, nơi đội ngũ shipper hoạt động 24/7 với mật độ cao nhất.',
+    stats: [['Món đặt nhiều nhất', 'Trà sữa, cơm tấm'], ['Phí giao hàng TB', '16.000–28.000đ'], ['Nền tảng phổ biến', 'GrabFood, ShopeeFood'], ['Giờ cao điểm', '11h30–13h, 18h–20h']],
+    img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&auto=format&fit=crop&q=80'
   }
 };
 
 const flashCards = [
-  { front: 'Giá trị là gì?', back: 'Lao động xã hội của người sản xuất kết tinh trong hàng hóa (công sức nấu ăn của quán + công sức chạy xe của shipper).' },
-  { front: 'Hàng hoá là gì?', back: 'Một ly trà sữa hay một chuyến giao hàng đều là hàng hóa vì chúng có giá trị sử dụng (giải khát/vận chuyển) và giá trị trao đổi (bán được).' },
-  { front: 'Lao động là gì?', back: 'Thời gian, kỹ năng và công sức của đầu bếp (lao động sống) và shipper (lao động vận chuyển) được cộng dồn vào giá trị cuối cùng.' },
-  { front: 'Vì sao giá thay đổi?', back: 'Giá trị khá ổn định, nhưng Cung - Cầu lệch pha (mưa to, giờ vàng, ít shipper) kéo giá cả tạm thời tách rời khỏi trục giá trị.' }
+  { 
+    front: 'Giá trị là gì?', 
+    back: '<p>Là <b>lao động xã hội của người sản xuất hàng hóa kết tinh trong hàng hóa đó</b>. Bản chất của giá trị không phải là một thuộc tính vật lý tự nhiên của vật phẩm, mà là phạm trù phản ánh <b>quan hệ sản xuất xã hội</b> giữa những người sản xuất hàng hóa.</p><ul><li><b>Đo lường lượng giá trị:</b> Được đo bằng thời gian lao động xã hội cần thiết (hao phí trung bình để sản xuất ra một giá trị sử dụng trong điều kiện bình thường).</li><li><b>Mối quan hệ:</b> Giá trị là nội dung, là cơ sở; giá trị trao đổi chỉ là hình thức biểu hiện bên ngoài của giá trị.</li></ul>' 
+  },
+  { 
+    front: 'Hàng hoá là gì?', 
+    back: '<p>Là <b>sản phẩm của lao động, có thể thỏa mãn một nhu cầu nào đó của con người và đi vào tiêu dùng thông qua trao đổi, mua bán</b>. Hàng hóa có hai thuộc tính thống nhất biện chứng:</p><ul><li><b>Giá trị sử dụng:</b> Công dụng có ích của hàng hóa nhằm thỏa mãn nhu cầu tiêu dùng (phạm trù vĩnh cửu).</li><li><b>Giá trị:</b> Lao động xã hội của người sản xuất kết tinh (phạm trù lịch sử, chỉ tồn tại trong nền kinh tế hàng hóa).</li></ul>' 
+  },
+  { 
+    front: 'Lao động là gì?', 
+    back: '<p>Lao động sản xuất hàng hóa có <b>tính hai mặt</b> (phát kiến vĩ đại của Karl Marx):</p><ul><li><b>Lao động cụ thể:</b> Lao động có ích dưới một hình thức nghề nghiệp chuyên môn cụ thể (pha chế, giao hàng). Nó tạo ra <b>giá trị sử dụng</b> của hàng hóa.</li><li><b>Lao động trừu tượng:</b> Sự hao phí sức lực cơ bắp, trí óc và thần kinh nói chung của người sản xuất. Nó tạo ra <b>giá trị</b> hàng hóa (hao phí lao động trừu tượng chính là thực thể của giá trị).</li></ul>' 
+  },
+  { 
+    front: 'Vì sao giá thay đổi?', 
+    back: '<p>Yêu cầu cơ bản của <b>Quy luật giá trị</b> là sản xuất và trao đổi phải dựa trên hao phí lao động xã hội cần thiết. Giá cả là biểu hiện bằng tiền của giá trị.</p><ul><li><b>Sự biến động:</b> Giá cả thị trường dao động tự do xoay quanh trục giá trị dưới tác động tương hỗ của <b>cung - cầu, cạnh tranh và lưu thông tiền tệ</b>.</li><li>Khi Cung &lt; Cầu (mưa lớn, ít shipper), giá bị đẩy lên trên giá trị; khi Cung &gt; Cầu, giá hạ xuống dưới giá trị. Nhưng tổng giá cả luôn cân bằng với tổng giá trị.</li></ul>' 
+  }
 ];
 
 const quiz = [
@@ -177,19 +200,23 @@ const quiz = [
 const questionExplanations = {
   a: {
     title: 'Cung – cầu lệch pha',
-    body: 'Khi trời mưa, hàng ngàn người cùng lúc muốn đặt trà sữa, nhưng số lượng shipper sẵn sàng chạy trong mưa không tăng kịp. Theo quy luật giá trị, giá cả luôn dao động quanh giá trị thực do quan hệ cung – cầu. Cung giảm (ít shipper chịu chạy) trong khi cầu tăng vọt → giá cả bị đẩy lên cao hơn giá trị, dù ly trà sữa vẫn là chính ly trà sữa đó.'
+    body: 'Khi trời mưa, hàng ngàn người cùng lúc muốn đặt trà sữa, nhưng số lượng shipper sẵn sàng chạy trong mưa không tăng kịp. Theo quy luật giá trị, giá cả luôn dao động quanh giá trị thực do quan hệ cung – cầu. Cung giảm (ít shipper chịu chạy) trong khi cầu tăng vọt → giá cả bị đẩy lên cao hơn giá trị, dù ly trà sữa vẫn là chính ly trà sữa đó.',
+    img: '/rain.png'
   },
   b: {
     title: 'Hao phí lao động xã hội thay đổi',
-    body: 'Nếu quán tăng giá nguyên liệu (trà, sữa, đường, ly nhựa), tức là lượng lao động xã hội cần thiết để tạo ra ly trà sữa đã tăng lên — nguyên liệu đắt hơn đồng nghĩa với nhiều "lao động kết tinh" hơn trong sản phẩm. Khi đó, chính giá trị của hàng hoá tăng, nên giá cả tăng theo là hợp lý theo đúng quy luật.'
+    body: 'Nếu quán tăng giá nguyên liệu (trà, sữa, đường, ly nhựa), tức là lượng lao động xã hội cần thiết để tạo ra ly trà sữa đã tăng lên — nguyên liệu đắt hơn đồng nghĩa với nhiều "lao động kết tinh" hơn trong sản phẩm. Khi đó, chính giá trị của hàng hoá tăng, nên giá cả tăng theo là hợp lý theo đúng quy luật.',
+    img: '/ingredients.png'
   },
   c: {
     title: 'Giá trị lao động của shipper tăng',
-    body: 'Giờ cao điểm khiến công việc của shipper vất vả hơn: kẹt xe, tranh đơn, rủi ro cao hơn. Phần phụ phí giờ cao điểm chính là phản ánh giá trị lao động tăng thêm mà shipper phải bỏ ra. Đây không phải "phí vô lý" mà là tiền công cho lao động phức tạp và rủi ro hơn.'
+    body: 'Giờ cao điểm khiến công việc của shipper vất vả hơn: kẹt xe, tranh đơn, rủi ro cao hơn. Phần phụ phí giờ cao điểm chính là phản ánh giá trị lao động tăng thêm mà shipper phải bỏ ra. Đây không phải "phí vô lý" mà là tiền công cho lao động phức tạp và rủi ro hơn.',
+    img: '/rushhour.png'
   },
   d: {
     title: 'Trợ giá của nền tảng biến mất',
-    body: 'Giá trị thật của ly trà sữa (35–40 nghìn hao phí lao động) có thể không đổi, nhưng khi hết mã giảm giá, phần "trợ giá" mà nền tảng từng bù cho bạn không còn nữa. Bạn đang trả gần hơn với giá cả thị trường thật, thay vì mức giá đã được nền tảng "che" bớt bằng khuyến mãi.'
+    body: 'Giá trị thật của ly trà sữa (35–40 nghìn hao phí lao động) có thể không đổi, nhưng khi hết mã giảm giá, phần "trợ giá" mà nền tảng từng bù cho bạn không còn nữa. Bạn đang trả gần hơn với giá cả thị trường thật, thay vì mức giá đã được nền tảng "che" bớt bằng khuyến mãi.',
+    img: '/coupon.jpg'
   }
 };
 
@@ -221,6 +248,7 @@ function App() {
   // Shared Modals State
   const [modal, setModal] = useState(null);
   const [showCert, setShowCert] = useState(false);
+  const [activeCity, setActiveCity] = useState(null);
 
   // Dynamic Builder Calculation
   const receipt = useMemo(() => {
@@ -306,6 +334,11 @@ function App() {
           <div className="modal-card">
             <button className="modal-close" onClick={() => setModal(null)}>✕</button>
             <div className="modal-content">
+              {modal.img && (
+                <div style={{ width: '100%', height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+                  <img src={modal.img} alt={modal.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+              )}
               <div className="modal-head">
                 <div className="modal-icon-badge">
                   {React.createElement(modal.icon, { size: 30, className: "modal-icon-svg" })}
@@ -314,7 +347,7 @@ function App() {
                 <h3>{modal.title}</h3>
               </div>
               <div className="modal-body">
-                <p>{modal.body}</p>
+                <div className="modal-desc" dangerouslySetInnerHTML={{ __html: modal.body }} />
                 {modal.stats && modal.stats.length > 0 && (
                   <div className="modal-stats">
                     {modal.stats.map(([label, val]) => (
@@ -367,15 +400,59 @@ function App() {
           <div className="phone-visual" aria-label="Mô phỏng đơn giao đồ ăn">
             <div className="phone-top"></div>
             <div className="delivery-map">
-              <span className="pin restaurant"></span>
-              <span className="pin customer"></span>
-              <span className="route"></span>
-              <Bike className="bike" size={34} />
+              <div className="delivery-grid" aria-hidden="true"></div>
+              <svg className="delivery-routes" viewBox="0 0 640 310" aria-hidden="true">
+                <path className="street-path" d="M88 210 L178 210 Q214 210 214 174 L214 96 L334 96 Q370 96 370 132 L370 226 L550 226" />
+                <path className="street-path" d="M88 210 L88 72 L248 72 Q284 72 284 108 L284 154 L492 154 Q528 154 528 76" />
+                <path className="street-path" d="M238 238 L238 184 Q238 148 274 148 L430 148 L430 88 L550 88" />
+                <path className="route-path route-path-one" d="M88 210 L178 210 Q214 210 214 174 L214 96 L334 96 Q370 96 370 132 L370 226 L550 226" />
+                <path className="route-path route-path-two" d="M88 210 L88 72 L248 72 Q284 72 284 108 L284 154 L492 154 Q528 154 528 76" />
+                <path className="route-path route-path-three" d="M238 238 L238 184 Q238 148 274 148 L430 148 L430 88 L550 88" />
+              </svg>
+              <div className="map-place shop-place stop-main">
+                <span className="shop-icon"></span>
+                <span className="place-label">Quán</span>
+              </div>
+              <div className="map-place person-place stop-a">
+                <span className="stick-person"></span>
+                <span className="place-label">Khách A</span>
+              </div>
+              <div className="map-place person-place stop-b">
+                <span className="stick-person"></span>
+                <span className="place-label">Khách B</span>
+              </div>
+              <div className="map-place shop-place stop-c">
+                <span className="shop-icon"></span>
+                <span className="place-label">Quán 2</span>
+              </div>
+              <div className="map-place person-place stop-d">
+                <span className="stick-person"></span>
+                <span className="place-label">Khách C</span>
+              </div>
+              <div className="delivery-bike bike-on-path path-one">
+                <Bike className="bike-icon" size={26} />
+                <span className="delivery-box"></span>
+              </div>
+              <div className="delivery-bike bike-on-path path-two">
+                <Bike className="bike-icon" size={24} />
+                <span className="delivery-box"></span>
+              </div>
+              <div className="delivery-bike bike-on-path path-three">
+                <Bike className="bike-icon" size={22} />
+                <span className="delivery-box"></span>
+              </div>
             </div>
-            <div className="order-card">
-              <b>Trà sữa trân châu</b>
-              <span>Phí giao hàng biến động liên tục</span>
-              <strong>{money(72000)}</strong>
+            <div className="order-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px' }}>
+              <img 
+                src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=150&auto=format&fit=crop&q=80" 
+                alt="Trà sữa trân châu" 
+                style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover', border: '1px solid var(--line)' }} 
+              />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left' }}>
+                <b style={{ fontSize: '15px', color: 'var(--ink)' }}>Trà sữa trân châu</b>
+                <span style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.2' }}>Phí giao hàng biến động liên tục</span>
+                <strong style={{ fontSize: '20px', color: 'var(--red)', fontWeight: '850', marginTop: '4px' }}>{money(72000)}</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -390,33 +467,60 @@ function App() {
         
         <div className="answer-grid">
           <button className={`info-card ${questionAnswer === 'a' ? 'active' : ''}`} onClick={() => setQuestionAnswer('a')}>
-            <span style={{ fontSize: '26px' }}>🌧️</span>
+            <img 
+              src="/rain.png" 
+              alt="Trời mưa" 
+              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
+            />
             <span>Trời mưa, ai cũng đặt trà sữa</span>
           </button>
           <button className={`info-card ${questionAnswer === 'b' ? 'active' : ''}`} onClick={() => setQuestionAnswer('b')}>
-            <span style={{ fontSize: '26px' }}>🧋</span>
+            <img 
+              src="/ingredients.png" 
+              alt="Nguyên liệu" 
+              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
+            />
             <span>Quán tăng giá nguyên liệu pha chế</span>
           </button>
           <button className={`info-card ${questionAnswer === 'c' ? 'active' : ''}`} onClick={() => setQuestionAnswer('c')}>
-            <span style={{ fontSize: '26px' }}>⏰</span>
+            <img 
+              src="/rushhour.png" 
+              alt="Giờ cao điểm" 
+              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
+            />
             <span>Ứng dụng tính phí giờ cao điểm</span>
           </button>
           <button className={`info-card ${questionAnswer === 'd' ? 'active' : ''}`} onClick={() => setQuestionAnswer('d')}>
-            <span style={{ fontSize: '26px' }}>🎟️</span>
+            <img 
+              src="/coupon.jpg" 
+              alt="Mã giảm giá" 
+              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
+            />
             <span>Mã giảm giá đã hết hạn sử dụng</span>
           </button>
         </div>
 
         {questionAnswer ? (
           <div className="theory-block" style={{ borderLeftColor: 'var(--red)', animation: 'show 0.3s ease both' }}>
-            <div className="theory-quote">
-              <strong style={{ color: 'var(--red)' }}>{questionExplanations[questionAnswer].title}</strong>
-            </div>
-            <div className="theory-explain">
-              <p>{questionExplanations[questionAnswer].body}</p>
-              <p style={{ fontStyle: 'italic', fontSize: '13px', marginTop: '12px' }}>
-                Trong thực tế, giá 82.000đ hôm nay thường là kết quả của cả bốn yếu tố trên cộng lại — đó chính là cách quy luật giá trị vận hành sống động trong đời thường.
-              </p>
+            <div className="theory-container">
+              {questionExplanations[questionAnswer].img && (
+                <img 
+                  src={questionExplanations[questionAnswer].img} 
+                  alt={questionExplanations[questionAnswer].title} 
+                  className="theory-block-img" 
+                />
+              )}
+              <div className="theory-info">
+                <div className="theory-quote">
+                  <strong style={{ color: 'var(--red)' }}>{questionExplanations[questionAnswer].title}</strong>
+                </div>
+                <div className="theory-explain">
+                  <p>{questionExplanations[questionAnswer].body}</p>
+                  <p style={{ fontStyle: 'italic', fontSize: '13px', marginTop: '12px' }}>
+                    Trong thực tế, giá 82.000đ hôm nay thường là kết quả của cả bốn yếu tố trên cộng lại — đó chính là cách quy luật giá trị vận hành sống động trong đời thường.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
@@ -487,6 +591,9 @@ function App() {
             </div>
           </div>
         </div>
+        <div style={{ textAlign: 'center', marginTop: '36px', paddingBottom: '32px' }}>
+          <button className="secondary" style={{ marginTop: 0 }} onClick={next}>Tiếp tục <ArrowRight size={17} /></button>
+        </div>
       </section>
 
       {/* SECTION 4: INTERACTIVE JOURNEY */}
@@ -495,40 +602,40 @@ function App() {
         <h2>Giá trị đi qua những ai?</h2>
         <p className="note" style={{ marginBottom: '32px' }}>Nhấn vào từng nút trong chuỗi để xem lao động nào đã được bỏ ra và giá trị kết tinh ở đâu.</p>
         
-        <div className="journey-interactive-flow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '14px', maxWidth: '1050px', margin: '0 auto 36px' }}>
-          <button className="info-card" onClick={() => setModal(journeyData.customer1)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>🙋</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Khách hàng</span>
+        <div className="journey-interactive-flow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'nowrap', gap: '10px', maxWidth: '1280px', margin: '0 auto 36px', overflowX: 'auto', padding: '10px' }}>
+          <button className="info-card" onClick={() => setModal(journeyData.customer1)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.customer1.img} alt="Khách hàng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Khách hàng</span>
           </button>
-          <span style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold' }}>→</span>
+          <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.restaurant)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>🏪</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Nhà hàng</span>
+          <button className="info-card" onClick={() => setModal(journeyData.restaurant)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.restaurant.img} alt="Nhà hàng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Nhà hàng</span>
           </button>
-          <span style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold' }}>→</span>
+          <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.kitchen)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>👨‍🍳</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Đầu bếp</span>
+          <button className="info-card" onClick={() => setModal(journeyData.kitchen)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.kitchen.img} alt="Đầu bếp" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Đầu bếp</span>
           </button>
-          <span style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold' }}>→</span>
+          <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.platform)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>📲</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Nền tảng</span>
+          <button className="info-card" onClick={() => setModal(journeyData.platform)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.platform.img} alt="Nền tảng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Nền tảng</span>
           </button>
-          <span style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold' }}>→</span>
+          <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.shipper)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>🛵</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Shipper</span>
+          <button className="info-card" onClick={() => setModal(journeyData.shipper)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.shipper.img} alt="Shipper" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Shipper</span>
           </button>
-          <span style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold' }}>→</span>
+          <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.customer2)} style={{ cursor: 'pointer', textAlign: 'center', flexDirection: 'column', minWidth: '120px' }}>
-            <span style={{ fontSize: '32px' }}>📦</span>
-            <span style={{ fontSize: '13px', fontWeight: '700', marginTop: '6px' }}>Khách nhận</span>
+          <button className="info-card" onClick={() => setModal(journeyData.customer2)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
+            <img src={journeyData.customer2.img} alt="Khách nhận" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
+            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Khách nhận</span>
           </button>
         </div>
 
@@ -539,34 +646,100 @@ function App() {
       <section className={`screen center ${active === 'timeline' ? 'show' : ''}`}>
         <p className="eyebrow">Kéo để khám phá</p>
         <h2>Một ngày, năm mức giá</h2>
-        <div className="timeline">
-          <div className="bar" style={{ height: `${timelineData[timeline].height}%` }}></div>
-          <strong>{money(timelineData[timeline].fee)}</strong>
+        
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '32px', maxWidth: '800px', margin: '28px auto 16px', flexWrap: 'wrap' }}>
+          <div className="timeline-img-card" style={{ width: '280px', height: '180px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 24px rgba(0,0,0,0.1)', border: '1px solid var(--line)', position: 'relative' }}>
+            <img 
+              src={timelineData[timeline].img} 
+              alt={timelineData[timeline].label} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'all 0.4s ease' }} 
+            />
+            <span style={{ position: 'absolute', bottom: '12px', left: '12px', background: 'rgba(0,0,0,0.65)', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '800' }}>
+              Thời điểm: {timelineData[timeline].label}
+            </span>
+          </div>
+          
+          <div className="timeline" style={{ margin: '0', height: '180px', width: '220px', display: 'flex', alignItems: 'end', justifyContent: 'center', gap: '16px' }}>
+            <div className="bar" style={{ height: `${timelineData[timeline].height}%`, width: '50px' }}></div>
+            <strong style={{ fontSize: '26px' }}>{money(timelineData[timeline].fee)}</strong>
+          </div>
         </div>
+
         <div className="timeline-controls">
           <input type="range" min="0" max="4" value={timeline} onChange={(e) => setTimeline(Number(e.target.value))} style={{ background: `linear-gradient(to right, var(--blue) ${(timeline / 4) * 100}%, var(--paper) ${(timeline / 4) * 100}%)` }} />
           <div className="marks">{timelineData.map((t, i) => <span className={i === timeline ? 'active' : ''} key={t.label}>{t.label}</span>)}</div>
         </div>
-        <p className="note" style={{ maxWidth: '640px', margin: '0 auto' }}>{timelineData[timeline].text}</p>
+        <p className="note" style={{ maxWidth: '640px', margin: '0 auto 24px' }}>{timelineData[timeline].text}</p>
+        <button className="secondary" onClick={next} style={{ marginTop: '24px' }}>Tiếp tục <ArrowRight size={17} /></button>
       </section>
 
       {/* SECTION 6: MAP */}
       <section className={`screen center ${active === 'map' ? 'show' : ''}`}>
         <p className="eyebrow">Khắp Việt Nam</p>
         <h2>Quy luật ở mỗi vùng đất</h2>
-        <p className="note" style={{ marginBottom: '32px' }}>Bấm vào từng thành phố để xem dữ liệu đặt đơn đặc trưng của khu vực.</p>
+        <p className="note" style={{ marginBottom: '32px' }}>Bấm vào các điểm chấm trên bản đồ hoặc danh sách thành phố để xem chi tiết đặc thù thị trường.</p>
         
-        <div className="city-grid">
-          {Object.entries(cityData).map(([key, data]) => (
-            <button key={key} className="info-card" onClick={() => setModal(data)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px' }}>
-              <span style={{ fontSize: '28px' }}>📍</span>
-              <div>
-                <h3 style={{ fontSize: '18px', fontWeight: '800' }}>{data.title}</h3>
-                <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '4px' }}>{data.tag.split(' · ')[0]}</p>
-              </div>
-            </button>
-          ))}
+        <div className="map-section-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '1100px', margin: '32px auto', flexWrap: 'wrap' }}>
+          
+          {/* Vietnam SVG Map */}
+          <div className="vietnam-map-box" style={{ width: '440px', height: '650px', position: 'relative', background: 'white', borderRadius: '24px', padding: '24px 20px 20px', boxShadow: '0 10px 30px rgba(15,23,42,0.08)', border: '1.5px solid var(--line)' }}>
+            <div style={{ position: 'absolute', top: '16px', left: '18px', display: 'flex', flexDirection: 'column', gap: '2px', zIndex: 12 }}>
+              <span style={{ fontSize: '11px', fontWeight: '850', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Bản đồ Việt Nam</span>
+              <span style={{ fontSize: '10px', color: 'var(--muted)', fontWeight: '600' }}>Toàn vẹn lãnh thổ & Đảo chủ quyền</span>
+            </div>
+            
+            <div className="map-relative-wrapper" style={{ position: 'relative', width: '100%', height: '100%', marginTop: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img 
+                src="/vietnam-map-custom.png" 
+                alt="Bản đồ Việt Nam và Quần đảo Hoàng Sa, Trường Sa" 
+                style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', borderRadius: '16px' }} 
+              />
+              
+              {/* Hotspot overlays accurately positioned on user custom map */}
+              <MapHotspot name="Hà Nội" left="35.5%" top="18.5%" active={activeCity === 'hanoi'} onClick={() => setModal(cityData.hanoi)} onMouseEnter={() => setActiveCity('hanoi')} onMouseLeave={() => setActiveCity(null)} />
+              <MapHotspot name="Đà Nẵng" left="48.0%" top="44.5%" active={activeCity === 'danang'} onClick={() => setModal(cityData.danang)} onMouseEnter={() => setActiveCity('danang')} onMouseLeave={() => setActiveCity(null)} />
+              <MapHotspot name="TP. Hồ Chí Minh" left="40.5%" top="74.0%" active={activeCity === 'hcmc'} onClick={() => setModal(cityData.hcmc)} onMouseEnter={() => setActiveCity('hcmc')} onMouseLeave={() => setActiveCity(null)} />
+              <MapHotspot name="Cần Thơ" left="33.5%" top="81.0%" active={activeCity === 'cantho'} onClick={() => setModal(cityData.cantho)} onMouseEnter={() => setActiveCity('cantho')} onMouseLeave={() => setActiveCity(null)} />
+            </div>
+          </div>
+
+          {/* City list cards on the right */}
+          <div className="city-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 240px))', gap: '20px', margin: '0' }}>
+            {Object.entries(cityData).map(([key, data]) => (
+              <button 
+                key={key} 
+                className={`info-card city-card ${activeCity === key ? 'highlighted' : ''}`} 
+                onClick={() => setModal(data)} 
+                onMouseEnter={() => setActiveCity(key)}
+                onMouseLeave={() => setActiveCity(null)}
+                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', padding: '0', overflow: 'hidden', borderRadius: '16px', border: activeCity === key ? '2px solid var(--blue)' : '1.5px solid var(--line)', background: 'white', minHeight: '230px', transition: 'all 0.25s ease', boxShadow: activeCity === key ? '0 12px 30px rgba(37,99,235,0.12)' : 'var(--shadow-sm)' }}
+              >
+                <div style={{ width: '100%', height: '110px', overflow: 'hidden', position: 'relative' }}>
+                  <img 
+                    src={data.img} 
+                    alt={data.title} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', transform: activeCity === key ? 'scale(1.08)' : 'scale(1)' }} 
+                    className="city-img"
+                  />
+                  <span style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--blue)', color: 'white', padding: '3px 8px', borderRadius: '4px', fontSize: '10px', fontWeight: '800' }}>
+                    {data.tag.split(' · ')[0]}
+                  </span>
+                </div>
+                <div style={{ padding: '16px', textAlign: 'left', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between', width: '100%' }}>
+                  <div>
+                    <h3 style={{ fontSize: '16px', fontWeight: '850', color: 'var(--ink)', margin: '0' }}>{data.title}</h3>
+                    <p style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '4px', lineHeight: '1.4' }}>{data.body}</p>
+                  </div>
+                  <span style={{ color: 'var(--blue)', fontSize: '12px', fontWeight: '800', marginTop: '12px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    Xem dữ liệu 📊
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+
         </div>
+        <button className="secondary" onClick={next} style={{ marginTop: '36px' }}>Tiếp tục <ArrowRight size={17} /></button>
       </section>
 
       {/* SECTION 7: PLAYGROUND */}
@@ -614,30 +787,47 @@ function App() {
             }} />
           </div>
         </div>
+        <div style={{ textAlign: 'center', marginTop: '36px', paddingBottom: '32px' }}>
+          <button className="secondary" style={{ marginTop: 0 }} onClick={next}>Tiếp tục <ArrowRight size={17} /></button>
+        </div>
       </section>
 
       {/* SECTION 8: FLIP CARDS */}
       <section className={`screen center ${active === 'cards' ? 'show' : ''}`}>
         <p className="eyebrow">Nền tảng lý thuyết</p>
         <h2>Bốn khái niệm cốt lõi</h2>
-        <div className="flash-grid">
-          {flashCards.map(({ front, back }, i) => (
-            <div className={flipped.includes(i) ? 'flash flipped' : 'flash'} key={front} onClick={() => setFlipped((old) => old.includes(i) ? old.filter((x) => x !== i) : [...old, i])}>
-              <div className="flash-inner">
-                <div className="flash-front">
-                  <span style={{ fontSize: '32px', marginBottom: '8px' }}>
-                    {i === 0 ? '💎' : i === 1 ? '🥡' : i === 2 ? '💪' : '📈'}
-                  </span>
-                  <span>{front}</span>
-                  <small style={{ marginTop: '14px', color: 'var(--muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Bấm để lật</small>
-                </div>
-                <div className="flash-back">
-                  <p dangerouslySetInnerHTML={{ __html: back }} />
-                </div>
-              </div>
-            </div>
+        <div className="flash-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', maxWidth: '1050px', margin: '32px auto' }}>
+          {flashCards.map(({ front, back }) => (
+            <button 
+              className="info-card" 
+              key={front} 
+              onClick={() => setModal({
+                icon: BookOpen,
+                tag: 'Nền tảng lý thuyết',
+                title: front,
+                body: back
+              })}
+              style={{
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '140px',
+                padding: '24px',
+                background: 'white',
+                border: '1.5px solid var(--line)',
+                borderRadius: '16px',
+                textAlign: 'center',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.28s ease'
+              }}
+            >
+              <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{front}</span>
+            </button>
           ))}
         </div>
+        <button className="secondary" onClick={next} style={{ marginTop: '36px' }}>Tiếp tục <ArrowRight size={17} /></button>
       </section>
 
       {/* SECTION 9: QUIZ (5 questions + cert popup) */}
@@ -648,9 +838,10 @@ function App() {
             <Trophy size={54} style={{ color: 'var(--sun)' }} />
             <h2>Bạn đạt {score}/{quiz.length} câu đúng!</h2>
             <p>Hành trình tìm hiểu quy luật giá trị đã hoàn tất.</p>
-            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '24px' }}>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '24px', flexWrap: 'wrap' }}>
               <button className="primary" onClick={() => setShowCert(true)}>Nhận chứng nhận 🎓</button>
               <button className="secondary" style={{ marginTop: 0 }} onClick={restartQuiz}>Làm lại <RefreshCw size={16} /></button>
+              <button className="secondary" style={{ marginTop: 0, border: '1px solid var(--blue)', color: 'var(--blue)' }} onClick={() => go('final')}>Đi đến Tổng kết <ArrowRight size={16} /></button>
             </div>
           </div>
         ) : (
@@ -692,35 +883,43 @@ function App() {
         <p className="eyebrow">Khép lại hành trình</p>
         <h2>Tất cả đã kết nối với nhau</h2>
         
-        <div className="final-map-container" style={{ margin: '32px auto', position: 'relative', height: '340px', maxWidth: '640px', width: '100%', background: 'white', borderRadius: '20px', boxShadow: 'var(--shadow-sm)' }}>
+        <div className="final-map-container" style={{ margin: '32px auto', position: 'relative', height: '400px', maxWidth: '640px', width: '100%', background: 'white', borderRadius: '24px', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--line)', overflow: 'hidden' }}>
+          {/* Animated SVG Connections */}
+          <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
+            <line x1="20%" y1="22%" x2="50%" y2="50%" stroke="var(--blue)" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
+            <line x1="80%" y1="22%" x2="50%" y2="50%" stroke="var(--red)" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
+            <line x1="80%" y1="78%" x2="50%" y2="50%" stroke="#10b981" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
+            <line x1="20%" y1="78%" x2="50%" y2="50%" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
+          </svg>
+
           {/* Node 1: Customer */}
-          <div className="info-card animate-float" style={{ position: 'absolute', left: '15%', top: '20%', transform: 'translate(-50%, -50%)', padding: '12px', minHeight: 'auto', width: '120px', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '24px' }}>🙋</span>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: '700' }}>Khách hàng trả tiền</span>
+          <div className="summary-node-card" style={{ left: '20%', top: '22%' }}>
+            <Users size={20} style={{ color: 'var(--blue)' }} />
+            <span className="summary-node-label">Khách hàng trả tiền</span>
           </div>
 
           {/* Node 2: Restaurant */}
-          <div className="info-card animate-float" style={{ position: 'absolute', right: '15%', top: '15%', transform: 'translate(50%, -50%)', padding: '12px', minHeight: 'auto', width: '120px', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '24px' }}>🏪</span>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: '700' }}>Nhà hàng bỏ vốn</span>
+          <div className="summary-node-card" style={{ left: '80%', top: '22%' }}>
+            <Store size={20} style={{ color: 'var(--red)' }} />
+            <span className="summary-node-label">Nhà hàng bỏ vốn</span>
           </div>
 
           {/* Node 3: Shipper */}
-          <div className="info-card animate-float" style={{ position: 'absolute', right: '15%', bottom: '20%', transform: 'translate(50%, 50%)', padding: '12px', minHeight: 'auto', width: '120px', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '24px' }}>🛵</span>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: '700' }}>Shipper bỏ công</span>
+          <div className="summary-node-card" style={{ left: '80%', top: '78%' }}>
+            <Bike size={20} style={{ color: '#10b981' }} />
+            <span className="summary-node-label">Shipper bỏ công</span>
           </div>
 
           {/* Node 4: Platform */}
-          <div className="info-card animate-float" style={{ position: 'absolute', left: '20%', bottom: '25%', transform: 'translate(-50%, 50%)', padding: '12px', minHeight: 'auto', width: '120px', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '24px' }}>📲</span>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: '700' }}>App thu phí dịch vụ</span>
+          <div className="summary-node-card" style={{ left: '20%', top: '78%' }}>
+            <Smartphone size={20} style={{ color: '#f59e0b' }} />
+            <span className="summary-node-label">App thu phí dịch vụ</span>
           </div>
 
           {/* Center: Value */}
-          <div className="info-card" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', background: 'var(--blue)', color: 'white', padding: '16px', minHeight: 'auto', width: '120px', textAlign: 'center', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 25px rgba(37,99,235,0.3)' }}>
-            <span style={{ fontSize: '32px' }}>💎</span>
-            <span style={{ fontSize: '14px', fontWeight: '800', marginTop: '6px' }}>Giá trị</span>
+          <div className="summary-center-card">
+            <Gem size={28} style={{ color: 'white', marginBottom: '6px' }} />
+            <span className="summary-center-label">Giá trị</span>
           </div>
         </div>
 
@@ -736,6 +935,29 @@ function App() {
 
 function Row({ label, value, strong, style }) {
   return <div className={strong ? 'row total' : 'row'} style={style}><span>{label}</span><b>{value}</b></div>;
+}
+
+function MapHotspot({ name, left, top, active, onClick, onMouseEnter, onMouseLeave }) {
+  return (
+    <div 
+      className={`map-hotspot ${active ? 'active' : ''}`} 
+      style={{ 
+        position: 'absolute', 
+        left, 
+        top, 
+        transform: 'translate(-50%, -50%)', 
+        cursor: 'pointer', 
+        zIndex: 10 
+      }}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <span className="hotspot-pulse"></span>
+      <span className="hotspot-dot"></span>
+      <span className="hotspot-tooltip">{name}</span>
+    </div>
+  );
 }
 
 createRoot(document.getElementById('root')).render(<App />);

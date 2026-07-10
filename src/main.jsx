@@ -376,18 +376,49 @@ function App() {
       {showCert && (
         <div className="modal-root open">
           <div className="modal-backdrop" onClick={() => setShowCert(false)}></div>
-          <div className="modal-card">
+          <div className="cert-modal-card">
             <button className="modal-close" onClick={() => setShowCert(false)}>✕</button>
-            <div className="modal-content text-center" style={{ padding: '32px', textAlign: 'center' }}>
-              <span className="cert-emoji" style={{ fontSize: '56px', display: 'block', marginBottom: '12px' }}>🎓</span>
-              <h3 className="cert-title" style={{ fontSize: '22px', fontWeight: '800', marginBottom: '8px' }}>Chứng nhận hoàn thành</h3>
-              <div className="cert-sub" style={{ color: 'var(--blue)', fontWeight: '700', marginBottom: '20px' }}>"Bạn đã hiểu Quy luật Giá trị của Marx!"</div>
-              <p style={{ fontSize: '15px', lineHeight: '1.6', color: 'var(--ink-soft)' }}>
-                Điểm số của bạn: <strong>{score}/{quiz.length}</strong>
-              </p>
-              <p style={{ fontSize: '14.5px', lineHeight: '1.65', color: 'var(--muted)', marginTop: '12px' }}>
-                Chúc mừng bạn đã hoàn thành hành trình khám phá cách Quy luật giá trị của Karl Marx vẫn đang âm thầm vận hành trong từng đơn hàng GrabFood, ShopeeFood và beFood mỗi ngày.
-              </p>
+            <div className="cert-border-outer">
+              <div className="cert-border-inner">
+                {/* Vintage Seal Stamp */}
+                <div className="cert-seal-badge" style={{ position: 'absolute', right: '40px', bottom: '40px' }}>
+                  <svg className="cert-seal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#fff" strokeWidth="2" strokeDasharray="3,3" />
+                    <path d="M50,2 L55,18 L71,10 L68,27 L83,23 L73,37 L88,40 L74,50 L88,60 L73,63 L83,77 L68,73 L71,90 L55,82 L50,98 L45,82 L29,90 L32,73 L17,77 L27,63 L12,60 L26,50 L12,40 L27,37 L17,23 L32,27 L29,10 L45,18 Z" opacity="0.15" />
+                  </svg>
+                  <div className="cert-seal-text">
+                    CHỨNG NHẬN<br/>HOÀN THÀNH
+                  </div>
+                </div>
+
+                {/* Header */}
+                <h3 className="cert-header">Chứng nhận hoàn thành</h3>
+                <div className="cert-subheader">Hành trình khám phá quy luật giá trị</div>
+                
+                <div className="cert-presented-to">Chứng nhận này được trân trọng trao cho</div>
+                <div className="cert-recipient">Học Viên Học Tập Mác - Lênin</div>
+                
+                <div className="cert-body-text">
+                  Vì đã xuất sắc vượt qua các thử thách thực tế và đạt số điểm <strong>{score}/{quiz.length}</strong> trong phần kiểm tra cuối khoá. Bạn đã thấu hiểu cách thức <strong>Quy luật giá trị</strong> và lý luận <strong>Kinh tế Chính trị Mác - Lênin</strong> âm thầm chi phối sự vận hành của nền kinh tế thị trường thông qua các tình huống đặt đơn hàng trực tuyến hàng ngày.
+                </div>
+                
+                {/* Meta details (Date & Signatures) */}
+                <div className="cert-meta-container">
+                  <div className="cert-signature-box">
+                    <div className="cert-signature-img" style={{ transform: 'rotate(-4deg)' }}>
+                      Karl Marx
+                    </div>
+                    <div className="cert-signature-line">Karl Marx</div>
+                  </div>
+                  
+                  <div className="cert-signature-box" style={{ marginRight: '110px' }}>
+                    <div className="cert-signature-img" style={{ transform: 'rotate(2deg)' }}>
+                      Friedrich Engels
+                    </div>
+                    <div className="cert-signature-line">F. Engels</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1228,3 +1228,146 @@ button, .chip, .toggle, .rail button, .info-card, .journey article, .city-grid a
 .flowing-line {
   animation: dash-flow 1.2s linear infinite;
 }
+
+/* Premium Certificate Styles */
+.cert-modal-card {
+  max-width: 680px !important;
+  width: 100% !important;
+  background: #fdfdfb !important;
+  padding: 0 !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cert-border-outer {
+  padding: 16px;
+  background: #fbfbf6;
+}
+
+.cert-border-inner {
+  border: 8px double #bda27e;
+  padding: 36px 28px;
+  position: relative;
+  background: #fdfcf7;
+  text-align: center;
+  box-shadow: inset 0 0 50px rgba(189, 162, 126, 0.08);
+}
+
+.cert-header {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cert-subheader {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.cert-presented-to {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.cert-recipient {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 850;
+  color: #1e3a8a;
+  border-bottom: 2px solid #e2e8f0;
+  display: inline-block;
+  padding-bottom: 8px;
+  margin: 0 auto 20px;
+  min-width: 320px;
+  text-transform: uppercase;
+}
+
+.cert-body-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #334155;
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+
+.cert-body-text strong {
+  color: #0f172a;
+}
+
+.cert-meta-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.cert-signature-box {
+  width: 150px;
+  text-align: center;
+}
+
+.cert-signature-line {
+  border-top: 1.5px solid #cbd5e1;
+  padding-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cert-signature-img {
+  font-family: 'Reenie Beanie', 'Brush Script MT', cursive, sans-serif;
+  font-size: 24px;
+  font-style: italic;
+  color: #1e3a8a;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.cert-seal-badge {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.cert-seal-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  fill: #d97706; /* gold/amber */
+  filter: drop-shadow(0 4px 6px rgba(217, 119, 6, 0.2));
+}
+
+.cert-seal-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Georgia', serif;
+  font-size: 9px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  line-height: 1.25;
+  transform: rotate(-10deg);
+}

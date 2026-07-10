@@ -966,7 +966,7 @@ function App() {
           >
             <Users size={20} style={{ color: 'var(--blue)', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'customer' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">Khách nhận trà sữa</span>
-            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tiêu dùng hàng hóa)</span>
+            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tiêu dùng hàng hóa)</span>
           </div>
 
           {/* Node 2: Restaurant */}
@@ -983,7 +983,7 @@ function App() {
           >
             <Store size={20} style={{ color: 'var(--red)', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'restaurant' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">Nhà hàng bỏ vốn</span>
-            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản bất biến - c)</span>
+            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản bất biến - c)</span>
           </div>
 
           {/* Node 3: Shipper */}
@@ -1000,7 +1000,7 @@ function App() {
           >
             <Bike size={20} style={{ color: '#10b981', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'shipper' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">Shipper bỏ công</span>
-            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản khả biến - v)</span>
+            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản khả biến - v)</span>
           </div>
 
           {/* Node 4: Platform */}
@@ -1017,22 +1017,22 @@ function App() {
           >
             <Smartphone size={20} style={{ color: '#f59e0b', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'platform' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">App thu phí dịch vụ</span>
-            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Giá trị thặng dư - m)</span>
+            <span style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Giá trị thặng dư - m)</span>
           </div>
 
           {/* Center: Value */}
           <div className="summary-center-card" style={{ zIndex: 10 }}>
-            <Gem size={28} style={{ color: 'white', marginBottom: '6px' }} />
+            <Gem size={32} style={{ color: 'white', marginBottom: '6px' }} />
             <span className="summary-center-label">Giá trị</span>
           </div>
         </div>
 
         {/* INTERACTIVE FORMULA HUD */}
-        <div className="formula-hud" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '24px auto', padding: '16px 24px', background: '#f8fafc', borderRadius: '16px', border: '1.5px solid var(--line)', maxWidth: '640px', width: '100%', boxSizing: 'border-box' }}>
-          <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', fontWeight: '750', marginBottom: '8px' }}>
+        <div className="formula-hud" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '24px auto', padding: '20px 24px', background: '#f8fafc', borderRadius: '16px', border: '1.5px solid var(--line)', maxWidth: '680px', width: '100%', boxSizing: 'border-box' }}>
+          <div style={{ fontSize: '13.5px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', fontWeight: '750', marginBottom: '10px' }}>
             Mô hình liên kết giá trị thặng dư của Marx
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '28px', fontFamily: 'Georgia, serif', fontWeight: 'bold' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '36px', fontFamily: 'Georgia, serif', fontWeight: 'bold' }}>
             <span style={{ color: hoveredSummaryNode === 'customer' ? 'var(--blue)' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'customer' ? '0 0 10px rgba(37,99,235,0.4)' : 'none', transform: hoveredSummaryNode === 'customer' ? 'scale(1.15)' : 'scale(1)' }}>W</span>
             <span>=</span>
             <span style={{ color: hoveredSummaryNode === 'restaurant' ? 'var(--red)' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'restaurant' ? '0 0 10px rgba(239,68,68,0.4)' : 'none', transform: hoveredSummaryNode === 'restaurant' ? 'scale(1.15)' : 'scale(1)' }}>c</span>
@@ -1041,7 +1041,7 @@ function App() {
             <span>+</span>
             <span style={{ color: hoveredSummaryNode === 'platform' ? '#f59e0b' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'platform' ? '0 0 10px rgba(245,158,11,0.4)' : 'none', transform: hoveredSummaryNode === 'platform' ? 'scale(1.15)' : 'scale(1)' }}>m</span>
           </div>
-          <div style={{ fontSize: '13.5px', color: 'var(--muted)', marginTop: '8px', textAlign: 'center', minHeight: '40px', lineHeight: '1.45' }}>
+          <div style={{ fontSize: '15px', color: 'var(--muted)', marginTop: '12px', textAlign: 'center', minHeight: '44px', lineHeight: '1.5' }}>
             {hoveredSummaryNode === 'customer' && <span><b>W (Tổng giá trị hàng hóa):</b> Lao động xã hội kết tinh trong sản phẩm ẩm thực và dịch vụ giao nhận, được hiện thực hóa khi khách hàng chi trả tiền tệ.</span>}
             {hoveredSummaryNode === 'restaurant' && <span><b>c (Tư bản bất biến):</b> Giá trị của các tư liệu sản xuất hao phí (mặt bằng, nguyên vật liệu pha chế, máy móc, cốc nhựa) dịch chuyển nguyên vẹn vào ly trà sữa.</span>}
             {hoveredSummaryNode === 'shipper' && <span><b>v (Tư bản khả biến):</b> Hao phí sức lao động sống trực tiếp tạo ra giá trị mới của cả đầu bếp pha chế (khâu sản xuất) và shipper (vận chuyển trong lưu thông).</span>}
@@ -1050,8 +1050,8 @@ function App() {
           </div>
         </div>
 
-        <div style={{ background: '#fcfcfc', border: '1px dashed var(--line)', padding: '20px 24px', borderRadius: '16px', maxWidth: '640px', margin: '0 auto 32px', boxSizing: 'border-box' }}>
-          <p className="final-quote" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '17px', fontWeight: '500', color: 'var(--blue)', margin: 0, lineHeight: '1.6' }}>
+        <div style={{ background: '#fcfcfc', border: '1px dashed var(--line)', padding: '24px 28px', borderRadius: '16px', maxWidth: '680px', margin: '0 auto 32px', boxSizing: 'border-box' }}>
+          <p className="final-quote" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '19px', fontWeight: '500', color: 'var(--blue)', margin: 0, lineHeight: '1.6' }}>
             "Giá cả chỉ là hình thức biểu hiện bằng tiền của giá trị — và trong từng đơn hàng Grab, Shopee hay Be bạn đặt hàng ngày, quy luật kinh tế ấy vẫn đang âm thầm vận hành."
           </p>
         </div>

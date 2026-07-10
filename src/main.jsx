@@ -257,6 +257,7 @@ function App() {
   const [modal, setModal] = useState(null);
   const [showCert, setShowCert] = useState(false);
   const [activeCity, setActiveCity] = useState(null);
+  const [hoveredSummaryNode, setHoveredSummaryNode] = useState(null);
 
   // Dynamic Builder Calculation
   const receipt = useMemo(() => {
@@ -914,49 +915,146 @@ function App() {
         <p className="eyebrow">Khép lại hành trình</p>
         <h2>Tất cả đã kết nối với nhau</h2>
         
-        <div className="final-map-container" style={{ margin: '32px auto', position: 'relative', height: '400px', maxWidth: '640px', width: '100%', background: 'white', borderRadius: '24px', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--line)', overflow: 'hidden' }}>
+        <div className="final-map-container" style={{ margin: '32px auto', position: 'relative', height: '420px', maxWidth: '680px', width: '100%', background: '#fafaf9', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', border: '1.5px solid var(--line)', overflow: 'hidden', backgroundImage: 'radial-gradient(circle at 1px 1px, var(--line) 1.5px, transparent 0)', backgroundSize: '24px 24px' }}>
           {/* Animated SVG Connections */}
           <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
-            <line x1="20%" y1="22%" x2="50%" y2="50%" stroke="var(--blue)" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
-            <line x1="80%" y1="22%" x2="50%" y2="50%" stroke="var(--red)" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
-            <line x1="80%" y1="78%" x2="50%" y2="50%" stroke="#10b981" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
-            <line x1="20%" y1="78%" x2="50%" y2="50%" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6,6" className="flowing-line" opacity="0.35" />
+            <line 
+              x1="20%" y1="22%" x2="50%" y2="50%" 
+              stroke={hoveredSummaryNode === 'customer' ? 'var(--blue)' : 'rgba(37, 99, 235, 0.25)'} 
+              strokeWidth={hoveredSummaryNode === 'customer' ? '4' : '2'} 
+              strokeDasharray="6,6" 
+              className="flowing-line" 
+              style={{ transition: 'all 0.3s ease', filter: hoveredSummaryNode === 'customer' ? 'drop-shadow(0 0 8px var(--blue))' : 'none' }}
+            />
+            <line 
+              x1="80%" y1="22%" x2="50%" y2="50%" 
+              stroke={hoveredSummaryNode === 'restaurant' ? 'var(--red)' : 'rgba(230, 57, 70, 0.25)'} 
+              strokeWidth={hoveredSummaryNode === 'restaurant' ? '4' : '2'} 
+              strokeDasharray="6,6" 
+              className="flowing-line" 
+              style={{ transition: 'all 0.3s ease', filter: hoveredSummaryNode === 'restaurant' ? 'drop-shadow(0 0 8px var(--red))' : 'none' }}
+            />
+            <line 
+              x1="80%" y1="78%" x2="50%" y2="50%" 
+              stroke={hoveredSummaryNode === 'shipper' ? '#10b981' : 'rgba(16, 185, 129, 0.25)'} 
+              strokeWidth={hoveredSummaryNode === 'shipper' ? '4' : '2'} 
+              strokeDasharray="6,6" 
+              className="flowing-line" 
+              style={{ transition: 'all 0.3s ease', filter: hoveredSummaryNode === 'shipper' ? 'drop-shadow(0 0 8px #10b981)' : 'none' }}
+            />
+            <line 
+              x1="20%" y1="78%" x2="50%" y2="50%" 
+              stroke={hoveredSummaryNode === 'platform' ? '#f59e0b' : 'rgba(245, 158, 11, 0.25)'} 
+              strokeWidth={hoveredSummaryNode === 'platform' ? '4' : '2'} 
+              strokeDasharray="6,6" 
+              className="flowing-line" 
+              style={{ transition: 'all 0.3s ease', filter: hoveredSummaryNode === 'platform' ? 'drop-shadow(0 0 8px #f59e0b)' : 'none' }}
+            />
           </svg>
 
           {/* Node 1: Customer */}
-          <div className="summary-node-card" style={{ left: '20%', top: '22%' }}>
-            <Users size={20} style={{ color: 'var(--blue)' }} />
-            <span className="summary-node-label">Khách hàng trả tiền</span>
+          <div 
+            className="summary-node-card" 
+            style={{ 
+              left: '20%', 
+              top: '22%',
+              borderColor: hoveredSummaryNode === 'customer' ? 'var(--blue)' : 'var(--line)',
+              boxShadow: hoveredSummaryNode === 'customer' ? '0 12px 28px rgba(37, 99, 235, 0.16)' : '0 8px 24px rgba(24, 24, 27, 0.04)'
+            }}
+            onMouseEnter={() => setHoveredSummaryNode('customer')}
+            onMouseLeave={() => setHoveredSummaryNode(null)}
+          >
+            <Users size={20} style={{ color: 'var(--blue)', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'customer' ? 'scale(1.2)' : 'scale(1)' }} />
+            <span className="summary-node-label">Khách nhận trà sữa</span>
+            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tiêu dùng hàng hóa)</span>
           </div>
 
           {/* Node 2: Restaurant */}
-          <div className="summary-node-card" style={{ left: '80%', top: '22%' }}>
-            <Store size={20} style={{ color: 'var(--red)' }} />
+          <div 
+            className="summary-node-card" 
+            style={{ 
+              left: '80%', 
+              top: '22%',
+              borderColor: hoveredSummaryNode === 'restaurant' ? 'var(--red)' : 'var(--line)',
+              boxShadow: hoveredSummaryNode === 'restaurant' ? '0 12px 28px rgba(230, 57, 70, 0.16)' : '0 8px 24px rgba(24, 24, 27, 0.04)'
+            }}
+            onMouseEnter={() => setHoveredSummaryNode('restaurant')}
+            onMouseLeave={() => setHoveredSummaryNode(null)}
+          >
+            <Store size={20} style={{ color: 'var(--red)', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'restaurant' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">Nhà hàng bỏ vốn</span>
+            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản bất biến - c)</span>
           </div>
 
           {/* Node 3: Shipper */}
-          <div className="summary-node-card" style={{ left: '80%', top: '78%' }}>
-            <Bike size={20} style={{ color: '#10b981' }} />
+          <div 
+            className="summary-node-card" 
+            style={{ 
+              left: '80%', 
+              top: '78%',
+              borderColor: hoveredSummaryNode === 'shipper' ? '#10b981' : 'var(--line)',
+              boxShadow: hoveredSummaryNode === 'shipper' ? '0 12px 28px rgba(16, 185, 129, 0.16)' : '0 8px 24px rgba(24, 24, 27, 0.04)'
+            }}
+            onMouseEnter={() => setHoveredSummaryNode('shipper')}
+            onMouseLeave={() => setHoveredSummaryNode(null)}
+          >
+            <Bike size={20} style={{ color: '#10b981', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'shipper' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">Shipper bỏ công</span>
+            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Tư bản khả biến - v)</span>
           </div>
 
           {/* Node 4: Platform */}
-          <div className="summary-node-card" style={{ left: '20%', top: '78%' }}>
-            <Smartphone size={20} style={{ color: '#f59e0b' }} />
+          <div 
+            className="summary-node-card" 
+            style={{ 
+              left: '20%', 
+              top: '78%',
+              borderColor: hoveredSummaryNode === 'platform' ? '#f59e0b' : 'var(--line)',
+              boxShadow: hoveredSummaryNode === 'platform' ? '0 12px 28px rgba(245, 158, 11, 0.16)' : '0 8px 24px rgba(24, 24, 27, 0.04)'
+            }}
+            onMouseEnter={() => setHoveredSummaryNode('platform')}
+            onMouseLeave={() => setHoveredSummaryNode(null)}
+          >
+            <Smartphone size={20} style={{ color: '#f59e0b', transition: 'transform 0.3s ease', transform: hoveredSummaryNode === 'platform' ? 'scale(1.2)' : 'scale(1)' }} />
             <span className="summary-node-label">App thu phí dịch vụ</span>
+            <span style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '4px', fontWeight: 'bold' }}>(Giá trị thặng dư - m)</span>
           </div>
 
           {/* Center: Value */}
-          <div className="summary-center-card">
+          <div className="summary-center-card" style={{ zIndex: 10 }}>
             <Gem size={28} style={{ color: 'white', marginBottom: '6px' }} />
             <span className="summary-center-label">Giá trị</span>
           </div>
         </div>
 
-        <p className="final-quote" style={{ fontFamily: 'Sora, Inter, sans-serif', fontSize: '18px', fontWeight: '600', color: 'var(--blue)', maxWidth: '600px', margin: '0 auto 32px', lineHeight: '1.6' }}>
-          "Giá cả chỉ là hình thức biểu hiện bằng tiền của giá trị — và trong mỗi đơn hàng bạn đặt, quy luật ấy vẫn đang âm thầm vận hành."
-        </p>
+        {/* INTERACTIVE FORMULA HUD */}
+        <div className="formula-hud" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '24px auto', padding: '16px 24px', background: '#f8fafc', borderRadius: '16px', border: '1.5px solid var(--line)', maxWidth: '640px', width: '100%', boxSizing: 'border-box' }}>
+          <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', fontWeight: '750', marginBottom: '8px' }}>
+            Mô hình liên kết giá trị thặng dư của Marx
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '28px', fontFamily: 'Georgia, serif', fontWeight: 'bold' }}>
+            <span style={{ color: hoveredSummaryNode === 'customer' ? 'var(--blue)' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'customer' ? '0 0 10px rgba(37,99,235,0.4)' : 'none', transform: hoveredSummaryNode === 'customer' ? 'scale(1.15)' : 'scale(1)' }}>W</span>
+            <span>=</span>
+            <span style={{ color: hoveredSummaryNode === 'restaurant' ? 'var(--red)' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'restaurant' ? '0 0 10px rgba(239,68,68,0.4)' : 'none', transform: hoveredSummaryNode === 'restaurant' ? 'scale(1.15)' : 'scale(1)' }}>c</span>
+            <span>+</span>
+            <span style={{ color: hoveredSummaryNode === 'shipper' ? '#10b981' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'shipper' ? '0 0 10px rgba(16,185,129,0.4)' : 'none', transform: hoveredSummaryNode === 'shipper' ? 'scale(1.15)' : 'scale(1)' }}>v</span>
+            <span>+</span>
+            <span style={{ color: hoveredSummaryNode === 'platform' ? '#f59e0b' : '#0f172a', transition: 'all 0.25s ease', textShadow: hoveredSummaryNode === 'platform' ? '0 0 10px rgba(245,158,11,0.4)' : 'none', transform: hoveredSummaryNode === 'platform' ? 'scale(1.15)' : 'scale(1)' }}>m</span>
+          </div>
+          <div style={{ fontSize: '13.5px', color: 'var(--muted)', marginTop: '8px', textAlign: 'center', minHeight: '40px', lineHeight: '1.45' }}>
+            {hoveredSummaryNode === 'customer' && <span><b>W (Tổng giá trị hàng hóa):</b> Lao động xã hội kết tinh trong sản phẩm ẩm thực và dịch vụ giao nhận, được hiện thực hóa khi khách hàng chi trả tiền tệ.</span>}
+            {hoveredSummaryNode === 'restaurant' && <span><b>c (Tư bản bất biến):</b> Giá trị của các tư liệu sản xuất hao phí (mặt bằng, nguyên vật liệu pha chế, máy móc, cốc nhựa) dịch chuyển nguyên vẹn vào ly trà sữa.</span>}
+            {hoveredSummaryNode === 'shipper' && <span><b>v (Tư bản khả biến):</b> Hao phí sức lao động sống trực tiếp tạo ra giá trị mới của cả đầu bếp pha chế (khâu sản xuất) và shipper (vận chuyển trong lưu thông).</span>}
+            {hoveredSummaryNode === 'platform' && <span><b>m (Giá trị thặng dư):</b> Phần thặng dư dôi ra ngoài tiền lương của lao động. Nền tảng trung gian trích một phần thặng dư này thông qua chiết khấu app để thu lợi nhuận.</span>}
+            {!hoveredSummaryNode && <span>Rê chuột vào các thẻ phía trên để khám phá vai trò của từng thành tố trong công thức giá trị của Karl Marx.</span>}
+          </div>
+        </div>
+
+        <div style={{ background: '#fcfcfc', border: '1px dashed var(--line)', padding: '20px 24px', borderRadius: '16px', maxWidth: '640px', margin: '0 auto 32px', boxSizing: 'border-box' }}>
+          <p className="final-quote" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '17px', fontWeight: '500', color: 'var(--blue)', margin: 0, lineHeight: '1.6' }}>
+            "Giá cả chỉ là hình thức biểu hiện bằng tiền của giá trị — và trong từng đơn hàng Grab, Shopee hay Be bạn đặt hàng ngày, quy luật kinh tế ấy vẫn đang âm thầm vận hành."
+          </p>
+        </div>
 
         <button className="primary" onClick={() => go('intro')}>Khám phá lại từ đầu</button>
       </section>

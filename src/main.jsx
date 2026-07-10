@@ -1056,7 +1056,7 @@ function App() {
         </div>
 
         <div style={{ background: '#fcfcfc', border: '1px dashed var(--line)', padding: '24px 28px', borderRadius: '16px', maxWidth: '680px', margin: '0 auto 32px', boxSizing: 'border-box' }}>
-          <p className="final-quote" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '19px', fontWeight: '500', color: 'var(--blue)', margin: 0, lineHeight: '1.6' }}>
+          <p className="final-quote" style={{ fontFamily: 'Sora, Inter, sans-serif', fontStyle: 'italic', fontSize: '18px', fontWeight: '500', color: 'var(--blue)', margin: 0, lineHeight: '1.6' }}>
             "Giá cả chỉ là hình thức biểu hiện bằng tiền của giá trị — và trong từng đơn hàng Grab, Shopee hay Be bạn đặt hàng ngày, quy luật kinh tế ấy vẫn đang âm thầm vận hành."
           </p>
         </div>

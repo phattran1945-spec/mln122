@@ -1282,26 +1282,27 @@ button, .chip, .toggle, .rail button, .info-card, .journey article, .city-grid a
 }
 
 .cert-header {
-  font-family: 'Cinzel', 'Georgia', serif;
+  font-family: 'Sora', 'Inter', sans-serif;
   font-size: 26px;
   letter-spacing: 0.12em;
   color: #1e293b;
   margin: 0 0 4px 0;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .cert-subheader {
-  font-family: 'Cinzel', 'Georgia', serif;
+  font-family: 'Sora', 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   color: #64748b;
   text-transform: uppercase;
   margin-bottom: 24px;
+  font-weight: 600;
 }
 
 .cert-presented-to {
-  font-family: 'Georgia', serif;
+  font-family: 'Sora', 'Inter', sans-serif;
   font-style: italic;
   font-size: 14px;
   color: #64748b;
@@ -1389,9 +1390,9 @@ button, .chip, .toggle, .rail button, .info-card, .journey article, .city-grid a
 .cert-seal-text {
   position: relative;
   z-index: 2;
-  font-family: 'Georgia', serif;
+  font-family: 'Sora', 'Inter', sans-serif;
   font-size: 9px;
-  font-weight: bold;
+  font-weight: 800;
   color: #fff;
   text-align: center;
   line-height: 1.25;

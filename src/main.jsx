@@ -128,19 +128,23 @@ const cityData = {
 const flashCards = [
   { 
     front: 'Giá trị là gì?', 
-    back: '<p>Là <b>lao động xã hội của người sản xuất hàng hóa kết tinh trong hàng hóa đó</b>. Bản chất của giá trị không phải là một thuộc tính vật lý tự nhiên của vật phẩm, mà là phạm trù phản ánh <b>quan hệ sản xuất xã hội</b> giữa những người sản xuất hàng hóa.</p><ul><li><b>Đo lường lượng giá trị:</b> Được đo bằng thời gian lao động xã hội cần thiết (hao phí trung bình để sản xuất ra một giá trị sử dụng trong điều kiện bình thường).</li><li><b>Mối quan hệ:</b> Giá trị là nội dung, là cơ sở; giá trị trao đổi chỉ là hình thức biểu hiện bên ngoài của giá trị.</li></ul>' 
+    back: '<p>Là <b>lao động xã hội của người sản xuất hàng hóa kết tinh trong hàng hóa đó</b>. Bản chất của giá trị không phải là một thuộc tính vật lý tự nhiên của vật phẩm, mà là phạm trù phản ánh <b>quan hệ sản xuất xã hội</b> giữa những người sản xuất hàng hóa.</p><ul><li><b>Đo lường lượng giá trị:</b> Được đo bằng thời gian lao động xã hội cần thiết (hao phí trung bình để sản xuất ra một giá trị sử dụng trong điều kiện bình thường).</li><li><b>Mối quan hệ:</b> Giá trị là nội dung, là cơ sở; giá trị trao đổi chỉ là hình thức biểu hiện bên ngoài của giá trị.</li></ul>',
+    img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&auto=format&fit=crop&q=80'
   },
   { 
     front: 'Hàng hoá là gì?', 
-    back: '<p>Là <b>sản phẩm của lao động, có thể thỏa mãn một nhu cầu nào đó của con người và đi vào tiêu dùng thông qua trao đổi, mua bán</b>. Hàng hóa có hai thuộc tính thống nhất biện chứng:</p><ul><li><b>Giá trị sử dụng:</b> Công dụng có ích của hàng hóa nhằm thỏa mãn nhu cầu tiêu dùng (phạm trù vĩnh cửu).</li><li><b>Giá trị:</b> Lao động xã hội của người sản xuất kết tinh (phạm trù lịch sử, chỉ tồn tại trong nền kinh tế hàng hóa).</li></ul>' 
+    back: '<p>Là <b>sản phẩm của lao động, có thể thỏa mãn một nhu cầu nào đó của con người và đi vào tiêu dùng thông qua trao đổi, mua bán</b>. Hàng hóa có hai thuộc tính thống nhất biện chứng:</p><ul><li><b>Giá trị sử dụng:</b> Công dụng có ích của hàng hóa nhằm thỏa mãn nhu cầu tiêu dùng (phạm trù vĩnh cửu).</li><li><b>Giá trị:</b> Lao động xã hội của người sản xuất kết tinh (phạm trù lịch sử, chỉ tồn tại trong nền kinh tế hàng hóa).</li></ul>',
+    img: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80'
   },
   { 
     front: 'Lao động là gì?', 
-    back: '<p>Lao động sản xuất hàng hóa có <b>tính hai mặt</b> (phát kiến vĩ đại của Karl Marx):</p><ul><li><b>Lao động cụ thể:</b> Lao động có ích dưới một hình thức nghề nghiệp chuyên môn cụ thể (pha chế, giao hàng). Nó tạo ra <b>giá trị sử dụng</b> của hàng hóa.</li><li><b>Lao động trừu tượng:</b> Sự hao phí sức lực cơ bắp, trí óc và thần kinh nói chung của người sản xuất. Nó tạo ra <b>giá trị</b> hàng hóa (hao phí lao động trừu tượng chính là thực thể của giá trị).</li></ul>' 
+    back: '<p>Lao động sản xuất hàng hóa có <b>tính hai mặt</b> (phát kiến vĩ đại của Karl Marx):</p><ul><li><b>Lao động cụ thể:</b> Lao động có ích dưới một hình thức nghề nghiệp chuyên môn cụ thể (pha chế, giao hàng). Nó tạo ra <b>giá trị sử dụng</b> của hàng hóa.</li><li><b>Lao động trừu tượng:</b> Sự hao phí sức lực cơ bắp, trí óc và thần kinh nói chung của người sản xuất. Nó tạo ra <b>giá trị</b> hàng hóa (hao phí lao động trừu tượng chính là thực thể của giá trị).</li></ul>',
+    img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop&q=80'
   },
   { 
     front: 'Vì sao giá thay đổi?', 
-    back: '<p>Yêu cầu cơ bản của <b>Quy luật giá trị</b> là sản xuất và trao đổi phải dựa trên hao phí lao động xã hội cần thiết. Giá cả là biểu hiện bằng tiền của giá trị.</p><ul><li><b>Sự biến động:</b> Giá cả thị trường dao động tự do xoay quanh trục giá trị dưới tác động tương hỗ của <b>cung - cầu, cạnh tranh và lưu thông tiền tệ</b>.</li><li>Khi Cung &lt; Cầu (mưa lớn, ít shipper), giá bị đẩy lên trên giá trị; khi Cung &gt; Cầu, giá hạ xuống dưới giá trị. Nhưng tổng giá cả luôn cân bằng với tổng giá trị.</li></ul>' 
+    back: '<p>Yêu cầu cơ bản của <b>Quy luật giá trị</b> là sản xuất và trao đổi phải dựa trên hao phí lao động xã hội cần thiết. Giá cả là biểu hiện bằng tiền của giá trị.</p><ul><li><b>Sự biến động:</b> Giá cả thị trường dao động tự do xoay quanh trục giá trị dưới tác động tương hỗ của <b>cung - cầu, cạnh tranh và lưu thông tiền tệ</b>.</li><li>Khi Cung &lt; Cầu (mưa lớn, ít shipper), giá bị đẩy lên trên giá trị; khi Cung &gt; Cầu, giá hạ xuống dưới giá trị. Nhưng tổng giá cả luôn cân bằng với tổng giá trị.</li></ul>',
+    img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80'
   }
 ];
 
@@ -344,7 +348,7 @@ function App() {
             <button className="modal-close" onClick={() => setModal(null)}>✕</button>
             <div className="modal-content">
               {modal.img && (
-                <div style={{ width: '100%', height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+                <div style={{ width: '100%', height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--line)', borderTopLeftRadius: '24px', borderTopRightRadius: '24px' }}>
                   <img src={modal.img} alt={modal.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               )}
@@ -785,7 +789,7 @@ function App() {
         <p className="eyebrow">Nền tảng lý thuyết</p>
         <h2>Bốn khái niệm cốt lõi</h2>
         <div className="flash-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', maxWidth: '1050px', margin: '32px auto' }}>
-          {flashCards.map(({ front, back }) => (
+          {flashCards.map(({ front, back, img }) => (
             <button 
               className="info-card" 
               key={front} 
@@ -793,7 +797,8 @@ function App() {
                 icon: BookOpen,
                 tag: 'Nền tảng lý thuyết',
                 title: front,
-                body: back
+                body: back,
+                img: img
               })}
               style={{
                 cursor: 'pointer',

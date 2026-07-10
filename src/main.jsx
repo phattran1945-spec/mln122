@@ -372,57 +372,6 @@ function App() {
         </div>
       )}
 
-      {/* CERTIFICATE MODAL */}
-      {showCert && (
-        <div className="modal-root open">
-          <div className="modal-backdrop" onClick={() => setShowCert(false)}></div>
-          <div className="cert-modal-card">
-            <button className="modal-close" onClick={() => setShowCert(false)}>✕</button>
-            <div className="cert-border-outer">
-              <div className="cert-border-inner">
-                {/* Vintage Seal Stamp */}
-                <div className="cert-seal-badge" style={{ position: 'absolute', right: '40px', bottom: '40px' }}>
-                  <svg className="cert-seal-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" stroke="#fff" strokeWidth="2" strokeDasharray="3,3" />
-                    <path d="M50,2 L55,18 L71,10 L68,27 L83,23 L73,37 L88,40 L74,50 L88,60 L73,63 L83,77 L68,73 L71,90 L55,82 L50,98 L45,82 L29,90 L32,73 L17,77 L27,63 L12,60 L26,50 L12,40 L27,37 L17,23 L32,27 L29,10 L45,18 Z" opacity="0.15" />
-                  </svg>
-                  <div className="cert-seal-text">
-                    CHỨNG NHẬN<br/>HOÀN THÀNH
-                  </div>
-                </div>
-
-                {/* Header */}
-                <h3 className="cert-header">Chứng nhận hoàn thành</h3>
-                <div className="cert-subheader">Hành trình khám phá quy luật giá trị</div>
-                
-                <div className="cert-presented-to">Chứng nhận này được trân trọng trao cho</div>
-                <div className="cert-recipient">Học Viên Học Tập Mác - Lênin</div>
-                
-                <div className="cert-body-text">
-                  Vì đã xuất sắc vượt qua các thử thách thực tế và đạt số điểm <strong>{score}/{quiz.length}</strong> trong phần kiểm tra cuối khoá. Bạn đã thấu hiểu cách thức <strong>Quy luật giá trị</strong> và lý luận <strong>Kinh tế Chính trị Mác - Lênin</strong> âm thầm chi phối sự vận hành của nền kinh tế thị trường thông qua các tình huống đặt đơn hàng trực tuyến hàng ngày.
-                </div>
-                
-                {/* Meta details (Date & Signatures) */}
-                <div className="cert-meta-container">
-                  <div className="cert-signature-box">
-                    <div className="cert-signature-img" style={{ transform: 'rotate(-4deg)' }}>
-                      Karl Marx
-                    </div>
-                    <div className="cert-signature-line">Karl Marx</div>
-                  </div>
-                  
-                  <div className="cert-signature-box" style={{ marginRight: '110px' }}>
-                    <div className="cert-signature-img" style={{ transform: 'rotate(2deg)' }}>
-                      Friedrich Engels
-                    </div>
-                    <div className="cert-signature-line">F. Engels</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* SECTION 1: HERO */}
       <section className={`screen ${active === 'intro' ? 'show' : ''}`}>
@@ -872,14 +821,58 @@ function App() {
       <section className={`screen center ${active === 'quiz' ? 'show' : ''}`}>
         <p className="eyebrow">Kiểm tra cuối</p>
         {quizIndex >= quiz.length ? (
-          <div className="quiz-done">
-            <Trophy size={54} style={{ color: 'var(--sun)' }} />
-            <h2>Bạn đạt {score}/{quiz.length} câu đúng!</h2>
-            <p>Hành trình tìm hiểu quy luật giá trị đã hoàn tất.</p>
-            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '24px', flexWrap: 'wrap' }}>
-              <button className="primary" onClick={() => setShowCert(true)}>Nhận chứng nhận 🎓</button>
-              <button className="secondary" style={{ marginTop: 0 }} onClick={restartQuiz}>Làm lại <RefreshCw size={16} /></button>
-              <button className="secondary" style={{ marginTop: 0, border: '1px solid var(--blue)', color: 'var(--blue)' }} onClick={() => go('final')}>Đi đến Tổng kết <ArrowRight size={16} /></button>
+          <div className="cert-card">
+            <div className="cert-border-outer">
+              <div className="cert-border-inner">
+                {/* Vintage Seal Stamp */}
+                <div className="cert-seal-badge" style={{ position: 'absolute', right: '40px', bottom: '40px' }}>
+                  <svg className="cert-seal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#fff" strokeWidth="2" strokeDasharray="3,3" />
+                    <path d="M50,2 L55,18 L71,10 L68,27 L83,23 L73,37 L88,40 L74,50 L88,60 L73,63 L83,77 L68,73 L71,90 L55,82 L50,98 L45,82 L29,90 L32,73 L17,77 L27,63 L12,60 L26,50 L12,40 L27,37 L17,23 L32,27 L29,10 L45,18 Z" opacity="0.15" />
+                  </svg>
+                  <div className="cert-seal-text">
+                    CHỨNG NHẬN<br/>HOÀN THÀNH
+                  </div>
+                </div>
+
+                {/* Header */}
+                <h3 className="cert-header" style={{ margin: '0 0 4px 0' }}>Chứng nhận hoàn thành</h3>
+                <div className="cert-subheader">Hành trình khám phá quy luật giá trị</div>
+                
+                <div className="cert-presented-to">Chứng nhận này được trân trọng trao cho</div>
+                <div className="cert-recipient">Học Viên Học Tập Mác - Lênin</div>
+                
+                <div className="cert-body-text">
+                  Vì đã xuất sắc vượt qua các thử thách thực tế và đạt số điểm <strong>{score}/{quiz.length}</strong> trong phần kiểm tra cuối khoá. Bạn đã thấu hiểu cách thức <strong>Quy luật giá trị</strong> và lý luận <strong>Kinh tế Chính trị Mác - Lênin</strong> âm thầm chi phối sự vận hành của nền kinh tế thị trường thông qua các tình huống đặt đơn hàng trực tuyến hàng ngày.
+                </div>
+                
+                {/* Meta details (Date & Signatures) */}
+                <div className="cert-meta-container">
+                  <div className="cert-signature-box">
+                    <div className="cert-signature-img" style={{ transform: 'rotate(-4deg)' }}>
+                      Karl Marx
+                    </div>
+                    <div className="cert-signature-line">Karl Marx</div>
+                  </div>
+                  
+                  <div className="cert-signature-box" style={{ marginRight: '110px' }}>
+                    <div className="cert-signature-img" style={{ transform: 'rotate(2deg)' }}>
+                      Friedrich Engels
+                    </div>
+                    <div className="cert-signature-line">F. Engels</div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '36px', position: 'relative', zIndex: 10 }}>
+                  <button className="secondary" style={{ marginTop: 0, background: '#fff', border: '1.5px solid var(--line)' }} onClick={restartQuiz}>
+                    Làm lại <RefreshCw size={16} />
+                  </button>
+                  <button className="primary" style={{ marginTop: 0 }} onClick={() => go('final')}>
+                    Đi đến Tổng kết <ArrowRight size={16} />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         ) : (

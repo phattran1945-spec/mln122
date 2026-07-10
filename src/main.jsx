@@ -615,40 +615,34 @@ function App() {
         <h2>Giá trị đi qua những ai?</h2>
         <p className="note" style={{ marginBottom: '32px' }}>Nhấn vào từng nút trong chuỗi để xem lao động nào đã được bỏ ra và giá trị kết tinh ở đâu.</p>
         
-        <div className="journey-interactive-flow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'nowrap', gap: '10px', maxWidth: '1280px', margin: '0 auto 36px', overflowX: 'auto', padding: '10px' }}>
-          <button className="info-card" onClick={() => setModal(journeyData.customer1)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.customer1.img} alt="Khách hàng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Khách hàng</span>
+        <div className="journey-interactive-flow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'nowrap', gap: '12px', maxWidth: '1280px', margin: '0 auto 36px', overflowX: 'auto', padding: '10px' }}>
+          <button className="info-card" onClick={() => setModal(journeyData.customer1)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Khách hàng</span>
           </button>
           <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.restaurant)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.restaurant.img} alt="Nhà hàng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Nhà hàng</span>
+          <button className="info-card" onClick={() => setModal(journeyData.restaurant)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Nhà hàng</span>
           </button>
           <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.kitchen)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.kitchen.img} alt="Đầu bếp" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Đầu bếp</span>
+          <button className="info-card" onClick={() => setModal(journeyData.kitchen)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Đầu bếp</span>
           </button>
           <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.platform)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.platform.img} alt="Nền tảng" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Nền tảng</span>
+          <button className="info-card" onClick={() => setModal(journeyData.platform)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Nền tảng</span>
           </button>
           <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.shipper)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.shipper.img} alt="Shipper" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Shipper</span>
+          <button className="info-card" onClick={() => setModal(journeyData.shipper)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Shipper</span>
           </button>
           <span className="flow-arrow" style={{ color: 'var(--line)', fontSize: '20px', fontWeight: 'bold', flexShrink: 0 }}>→</span>
 
-          <button className="info-card" onClick={() => setModal(journeyData.customer2)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '155px', minHeight: '175px', padding: '20px 10px', flexShrink: 0 }}>
-            <img src={journeyData.customer2.img} alt="Khách nhận" style={{ width: '90px', height: '90px', borderRadius: '50%', objectFit: 'cover', border: '2.5px solid var(--blue)', marginBottom: '10px' }} />
-            <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--ink)' }}>Khách nhận</span>
+          <button className="info-card" onClick={() => setModal(journeyData.customer2)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: '140px', minHeight: '80px', padding: '16px 12px', flexShrink: 0 }}>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--ink)' }}>Khách nhận</span>
           </button>
         </div>
 

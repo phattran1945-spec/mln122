@@ -200,23 +200,31 @@ const quiz = [
 const questionExplanations = {
   a: {
     title: 'Cung – cầu lệch pha',
-    body: 'Khi trời mưa, hàng ngàn người cùng lúc muốn đặt trà sữa, nhưng số lượng shipper sẵn sàng chạy trong mưa không tăng kịp. Theo quy luật giá trị, giá cả luôn dao động quanh giá trị thực do quan hệ cung – cầu. Cung giảm (ít shipper chịu chạy) trong khi cầu tăng vọt → giá cả bị đẩy lên cao hơn giá trị, dù ly trà sữa vẫn là chính ly trà sữa đó.',
-    img: '/rain.png'
+    body: '<p>Khi trời mưa, hàng ngàn người cùng lúc muốn đặt trà sữa, nhưng số lượng shipper sẵn sàng chạy trong mưa không tăng kịp.</p><ul><li><b>Quy luật giá trị:</b> Giá cả luôn dao động quanh giá trị thực tế do quan hệ cung – cầu.</li><li><b>Tác động:</b> Cung giảm (ít shipper chịu chạy) trong khi cầu tăng vọt &rarr; giá cả bị đẩy lên cao hơn giá trị, dù ly trà sữa vẫn giữ nguyên lượng hao phí lao động tạo ra nó.</li></ul>',
+    img: '/rain.png',
+    icon: CloudRain,
+    tag: 'Trời mưa'
   },
   b: {
     title: 'Hao phí lao động xã hội thay đổi',
-    body: 'Nếu quán tăng giá nguyên liệu (trà, sữa, đường, ly nhựa), tức là lượng lao động xã hội cần thiết để tạo ra ly trà sữa đã tăng lên — nguyên liệu đắt hơn đồng nghĩa với nhiều "lao động kết tinh" hơn trong sản phẩm. Khi đó, chính giá trị của hàng hoá tăng, nên giá cả tăng theo là hợp lý theo đúng quy luật.',
-    img: '/ingredients.png'
+    body: '<p>Nếu quán tăng giá nguyên liệu (trà, sữa, đường, ly nhựa), tức là lượng lao động xã hội cần thiết để tạo ra ly trà sữa đã thực sự tăng lên.</p><ul><li><b>Giá trị hàng hóa:</b> Nguyên liệu đắt hơn đồng nghĩa với việc hao phí "lao động quá khứ" (vật hóa) kết tinh trong sản phẩm tăng.</li><li><b>Tác động:</b> Khi chính giá trị của ly trà sữa tăng lên, giá cả của nó tăng theo là hoàn toàn tất yếu theo quy luật giá trị.</li></ul>',
+    img: '/ingredients.png',
+    icon: Utensils,
+    tag: 'Nguyên liệu'
   },
   c: {
     title: 'Giá trị lao động của shipper tăng',
-    body: 'Giờ cao điểm khiến công việc của shipper vất vả hơn: kẹt xe, tranh đơn, rủi ro cao hơn. Phần phụ phí giờ cao điểm chính là phản ánh giá trị lao động tăng thêm mà shipper phải bỏ ra. Đây không phải "phí vô lý" mà là tiền công cho lao động phức tạp và rủi ro hơn.',
-    img: '/rushhour.png'
+    body: '<p>Giờ cao điểm khiến công việc của shipper vất vả hơn gấp nhiều lần (kẹt xe, kẹt đơn, thời tiết khắc nghiệt, rủi ro cao hơn).</p><ul><li><b>Hao phí sức lao động:</b> Sức lao động mà shipper phải bỏ ra tăng lên rõ rệt.</li><li><b>Tác động:</b> Phần phụ phí giờ cao điểm chính là sự bù đắp cho lượng lao động phức tạp và hao phí tăng thêm này, phản ánh đúng giá trị sức lao động thực tế.</li></ul>',
+    img: '/rushhour.png',
+    icon: Clock,
+    tag: 'Giờ cao điểm'
   },
   d: {
     title: 'Trợ giá của nền tảng biến mất',
-    body: 'Giá trị thật của ly trà sữa (35–40 nghìn hao phí lao động) có thể không đổi, nhưng khi hết mã giảm giá, phần "trợ giá" mà nền tảng từng bù cho bạn không còn nữa. Bạn đang trả gần hơn với giá cả thị trường thật, thay vì mức giá đã được nền tảng "che" bớt bằng khuyến mãi.',
-    img: '/coupon.jpg'
+    body: '<p>Giá trị thật của ly trà sữa (do hao phí lao động xã hội cần thiết của quán và đầu bếp) có thể không đổi.</p><ul><li><b>Mã giảm giá:</b> Là hình thức nền tảng tự chiết khấu, "trợ giá" để thu hút khách hàng và chiếm lĩnh thị trường.</li><li><b>Tác động:</b> Khi hết mã giảm giá, bạn chỉ đơn giản là đang trả đúng với mức giá cả thị trường thực tế của sản phẩm mà thôi.</li></ul>',
+    img: '/coupon.jpg',
+    icon: Ticket,
+    tag: 'Mã giảm giá'
   }
 };
 
@@ -466,66 +474,71 @@ function App() {
         </h2>
         
         <div className="answer-grid">
-          <button className={`info-card ${questionAnswer === 'a' ? 'active' : ''}`} onClick={() => setQuestionAnswer('a')}>
-            <img 
-              src="/rain.png" 
-              alt="Trời mưa" 
-              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
-            />
+          <button 
+            className={`info-card ${questionAnswer === 'a' ? 'active' : ''}`} 
+            onClick={() => {
+              setQuestionAnswer('a');
+              setModal({
+                title: questionExplanations.a.title,
+                body: questionExplanations.a.body,
+                img: questionExplanations.a.img,
+                icon: questionExplanations.a.icon,
+                tag: questionExplanations.a.tag
+              });
+            }}
+          >
             <span>Trời mưa, ai cũng đặt trà sữa</span>
           </button>
-          <button className={`info-card ${questionAnswer === 'b' ? 'active' : ''}`} onClick={() => setQuestionAnswer('b')}>
-            <img 
-              src="/ingredients.png" 
-              alt="Nguyên liệu" 
-              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
-            />
+          <button 
+            className={`info-card ${questionAnswer === 'b' ? 'active' : ''}`} 
+            onClick={() => {
+              setQuestionAnswer('b');
+              setModal({
+                title: questionExplanations.b.title,
+                body: questionExplanations.b.body,
+                img: questionExplanations.b.img,
+                icon: questionExplanations.b.icon,
+                tag: questionExplanations.b.tag
+              });
+            }}
+          >
             <span>Quán tăng giá nguyên liệu pha chế</span>
           </button>
-          <button className={`info-card ${questionAnswer === 'c' ? 'active' : ''}`} onClick={() => setQuestionAnswer('c')}>
-            <img 
-              src="/rushhour.png" 
-              alt="Giờ cao điểm" 
-              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
-            />
+          <button 
+            className={`info-card ${questionAnswer === 'c' ? 'active' : ''}`} 
+            onClick={() => {
+              setQuestionAnswer('c');
+              setModal({
+                title: questionExplanations.c.title,
+                body: questionExplanations.c.body,
+                img: questionExplanations.c.img,
+                icon: questionExplanations.c.icon,
+                tag: questionExplanations.c.tag
+              });
+            }}
+          >
             <span>Ứng dụng tính phí giờ cao điểm</span>
           </button>
-          <button className={`info-card ${questionAnswer === 'd' ? 'active' : ''}`} onClick={() => setQuestionAnswer('d')}>
-            <img 
-              src="/coupon.jpg" 
-              alt="Mã giảm giá" 
-              style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid var(--line)' }} 
-            />
+          <button 
+            className={`info-card ${questionAnswer === 'd' ? 'active' : ''}`} 
+            onClick={() => {
+              setQuestionAnswer('d');
+              setModal({
+                title: questionExplanations.d.title,
+                body: questionExplanations.d.body,
+                img: questionExplanations.d.img,
+                icon: questionExplanations.d.icon,
+                tag: questionExplanations.d.tag
+              });
+            }}
+          >
             <span>Mã giảm giá đã hết hạn sử dụng</span>
           </button>
         </div>
 
-        {questionAnswer ? (
-          <div className="theory-block" style={{ borderLeftColor: 'var(--red)', animation: 'show 0.3s ease both' }}>
-            <div className="theory-container">
-              {questionExplanations[questionAnswer].img && (
-                <img 
-                  src={questionExplanations[questionAnswer].img} 
-                  alt={questionExplanations[questionAnswer].title} 
-                  className="theory-block-img" 
-                />
-              )}
-              <div className="theory-info">
-                <div className="theory-quote">
-                  <strong style={{ color: 'var(--red)' }}>{questionExplanations[questionAnswer].title}</strong>
-                </div>
-                <div className="theory-explain">
-                  <p>{questionExplanations[questionAnswer].body}</p>
-                  <p style={{ fontStyle: 'italic', fontSize: '13px', marginTop: '12px' }}>
-                    Trong thực tế, giá 82.000đ hôm nay thường là kết quả của cả bốn yếu tố trên cộng lại — đó chính là cách quy luật giá trị vận hành sống động trong đời thường.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <p className="note">Bấm vào một giả thuyết phía trên để giải thích dưới góc nhìn của Quy luật giá trị.</p>
-        )}
+        <p className="note" style={{ marginTop: '24px', marginBottom: '32px' }}>
+          Bấm vào một giả thuyết phía trên để xem giải thích chi tiết trong modal dưới góc nhìn của Quy luật giá trị.
+        </p>
 
         <button className="secondary" onClick={next}>Tiếp tục <ArrowRight size={17} /></button>
       </section>

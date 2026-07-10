@@ -990,9 +990,10 @@ button, .chip, .toggle, .rail button, .info-card, .journey article, .city-grid a
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
-  padding: 20px;
-  text-align: left;
+  padding: 24px 20px;
+  text-align: center;
   border: 1.5px solid var(--line);
   background: white;
   transition: all 0.25s ease;

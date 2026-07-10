@@ -544,21 +544,21 @@ function App() {
 
               <label>Chọn món ăn / Nhà hàng</label>
               <div className="chips">
-                <button className={restaurant === 'binhdan' ? 'chip active' : 'chip'} onClick={() => setRestaurant('binhdan')}>Cơm bình dân (35K)</button>
-                <button className={restaurant === 'tra-sua' ? 'chip active' : 'chip'} onClick={() => setRestaurant('tra-sua')}>Trà sữa (55K)</button>
-                <button className={restaurant === 'nhahang' ? 'chip active' : 'chip'} onClick={() => setRestaurant('nhahang')}>Nhà hàng cao cấp (120K)</button>
+                <button className={restaurant === 'binhdan' ? 'chip active' : 'chip'} onClick={() => setRestaurant('binhdan')}>Cơm bình dân</button>
+                <button className={restaurant === 'tra-sua' ? 'chip active' : 'chip'} onClick={() => setRestaurant('tra-sua')}>Trà sữa</button>
+                <button className={restaurant === 'nhahang' ? 'chip active' : 'chip'} onClick={() => setRestaurant('nhahang')}>Nhà hàng cao cấp</button>
               </div>
 
               <label>Thời tiết</label>
               <div className="chips">
                 <button className={weather === 'sunny' ? 'chip active' : 'chip'} onClick={() => setWeather('sunny')}>☀️ Nắng đẹp</button>
-                <button className={weather === 'rain' ? 'chip active' : 'chip'} onClick={() => setWeather('rain')}>🌧️ Mưa lớn (+40%)</button>
+                <button className={weather === 'rain' ? 'chip active' : 'chip'} onClick={() => setWeather('rain')}>🌧️ Mưa lớn</button>
               </div>
 
               <label>Thời điểm đặt</label>
               <div className="chips">
                 <button className={rush === 'normal' ? 'chip active' : 'chip'} onClick={() => setRush('normal')}>🕐 Giờ thường</button>
-                <button className={rush === 'rush' ? 'chip active' : 'chip'} onClick={() => setRush('rush')}>🔥 Giờ vàng (+35%)</button>
+                <button className={rush === 'rush' ? 'chip active' : 'chip'} onClick={() => setRush('rush')}>🔥 Giờ vàng</button>
               </div>
 
               <label>Khoảng cách: <b>{distance} km</b></label>
